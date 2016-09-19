@@ -1,5 +1,6 @@
 /Users/gauravdiwanji/Documents/workspace/RestService/src/main/java/com/solomon/rest/model/Scale.java
 /Users/gauravdiwanji/Documents/workspace/RestService/src/main/java/com/solomon/rest/model/AttributeSets.java
+/Users/gauravdiwanji/Documents/workspace/RestService/src/main/java/com/solomon/rest/model/TestTable.java
 /Users/gauravdiwanji/Documents/workspace/RestService/src/main/java/com/solomon/rest/resources/UpdateModel.java
 /Users/gauravdiwanji/Documents/workspace/RestService/src/main/java/com/solomon/rest/config/SolomonApplication.java
 /Users/gauravdiwanji/Documents/workspace/RestService/src/main/java/com/solomon/rest/model/HashTable.java
@@ -10,6 +11,7 @@
 /Users/gauravdiwanji/Documents/workspace/RestService/src/main/java/com/solomon/rest/model/Patient.java
 /Users/gauravdiwanji/Documents/workspace/RestService/src/main/java/com/solomon/rest/model/AttributeSetData.java
 /Users/gauravdiwanji/Documents/workspace/RestService/src/main/java/com/solomon/rest/model/JsonData.java
+/Users/gauravdiwanji/Documents/workspace/RestService/src/main/java/com/solomon/rest/service/JPAPersistenceManagerService.java
 /Users/gauravdiwanji/Documents/workspace/RestService/src/main/java/com/solomon/rest/resources/PersistenceTest.java
+/Users/gauravdiwanji/Documents/workspace/RestService/src/main/java/com/solomon/rest/config/SpringConfig.java
 /Users/gauravdiwanji/Documents/workspace/RestService/src/main/java/com/solomon/rest/model/TimeTradeOffList.java
-/Users/gauravdiwanji/Documents/workspace/RestService/src/main/java/com/solomon/rest/model/Test_table.java

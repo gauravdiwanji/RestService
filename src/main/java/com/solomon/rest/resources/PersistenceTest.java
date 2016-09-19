@@ -21,7 +21,7 @@ public class PersistenceTest {
         EntityManager em = factory.createEntityManager();
         
         em.getTransaction().begin();
-        Test_table test = new Test_table();
+        TestTable test = new TestTable();
         test.setValue_field("Test");
         em.persist(test);
         em.getTransaction().commit();
