@@ -33,7 +33,9 @@ public class UpdateModel {
 	@Produces(MediaType.TEXT_PLAIN)
 	public String verifyRESTService() {
 		
-		jpaService.createTable();
+		//jpaService.createTable();
+		
+		jpaService.updateValue("Test", "New Value");
  
 		// return HTTP response 200 in case of success
 		return "All ok bhosadike" ;
