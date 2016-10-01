@@ -22,7 +22,7 @@ public class JsonData implements Serializable {
 
 	//bi-directional one-to-one association to Model
 	@OneToOne
-	@JoinColumn(name="id")
+	@PrimaryKeyJoinColumn(name="id")
 	private Model model;
 
 	public JsonData() {

@@ -8,7 +8,7 @@ public class AttributeSets
 
     private String $$hashKey;
 
-    private String setId;
+    private int setId;
 
     public String getPosition ()
     {
@@ -40,12 +40,12 @@ public class AttributeSets
         this.$$hashKey = $$hashKey;
     }
 
-    public String getSetId ()
+    public int getSetId ()
     {
         return setId;
     }
 
-    public void setSetId (String setId)
+    public void setSetId (int setId)
     {
         this.setId = setId;
     }

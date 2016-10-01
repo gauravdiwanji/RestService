@@ -2,22 +2,22 @@ package com.solomon.rest.model;
 
 public class AttributeSetData
 {
-    private String position;
+    private int position;
 
     private String title;
 
     private String $$hashKey;
 
-    private String relativeWeight;
+    private double relativeWeight;
 
-    private String setId;
+    private int setId;
 
-    public String getPosition ()
+    public int getPosition ()
     {
         return position;
     }
 
-    public void setPosition (String position)
+    public void setPosition (int position)
     {
         this.position = position;
     }
@@ -42,22 +42,22 @@ public class AttributeSetData
         this.$$hashKey = $$hashKey;
     }
 
-    public String getRelativeWeight ()
+    public double getRelativeWeight ()
     {
         return relativeWeight;
     }
 
-    public void setRelativeWeight (String relativeWeight)
+    public void setRelativeWeight (double relativeWeight)
     {
         this.relativeWeight = relativeWeight;
     }
 
-    public String getSetId ()
+    public int getSetId ()
     {
         return setId;
     }
 
-    public void setSetId (String setId)
+    public void setSetId (int setId)
     {
         this.setId = setId;
     }

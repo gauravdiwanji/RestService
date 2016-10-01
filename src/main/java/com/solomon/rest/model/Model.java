@@ -39,7 +39,7 @@ public class Model implements Serializable {
 	private Patient patientBean;
 
 	//bi-directional many-to-one association to Scale
-	@OneToMany(mappedBy="modelBean")
+	@OneToMany(mappedBy="modelBean", cascade = CascadeType.PERSIST)
 	private List<Scale> scales;
 
 	public Model() {

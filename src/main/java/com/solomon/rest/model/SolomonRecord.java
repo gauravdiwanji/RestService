@@ -26,21 +26,23 @@ public class SolomonRecord
 
     private List<AttributeSetData> attributeSetData;
 
-    private String age;
+    private int age;
 
     private String gender;
 
     private String userName;
+    
+    private String modelName;
 
-    private String currentHealthState;
+	private String currentHealthState;
 
-    private TimeTradeOffList[] timeTradeOffList;
+    private List<TimeTradeOffList> timeTradeOffList;
 
     private List<Relationships> relationships;
 
     private String[] sortedAttributeData;
 
-    private HashTable hashTable;
+    //private HashTable hashTable;
 
     private String solution_array_counter;
 
@@ -134,12 +136,12 @@ public class SolomonRecord
         this.attributeSetData = attributeSetData;
     }
 
-    public String getAge ()
+    public int getAge ()
     {
         return age;
     }
 
-    public void setAge (String age)
+    public void setAge (int age)
     {
         this.age = age;
     }
@@ -163,6 +165,14 @@ public class SolomonRecord
     {
         this.userName = userName;
     }
+    
+    public String getModelName() {
+		return modelName;
+	}
+
+	public void setModelName(String modelName) {
+		this.modelName = modelName;
+	}
 
     public String getCurrentHealthState ()
     {
@@ -174,12 +184,12 @@ public class SolomonRecord
         this.currentHealthState = currentHealthState;
     }
 
-    public TimeTradeOffList[] getTimeTradeOffList ()
+    public List<TimeTradeOffList> getTimeTradeOffList ()
     {
         return timeTradeOffList;
     }
 
-    public void setTimeTradeOffList (TimeTradeOffList[] timeTradeOffList)
+    public void setTimeTradeOffList (List<TimeTradeOffList> timeTradeOffList)
     {
         this.timeTradeOffList = timeTradeOffList;
     }
@@ -204,15 +214,15 @@ public class SolomonRecord
         this.sortedAttributeData = sortedAttributeData;
     }
 
-    public HashTable getHashTable ()
-    {
-        return hashTable;
-    }
-
-    public void setHashTable (HashTable hashTable)
-    {
-        this.hashTable = hashTable;
-    }
+//    public HashTable getHashTable ()
+//    {
+//        return hashTable;
+//    }
+//
+//    public void setHashTable (HashTable hashTable)
+//    {
+//        this.hashTable = hashTable;
+//    }
 
     public String getSolution_array_counter ()
     {
@@ -358,13 +368,13 @@ public class SolomonRecord
 		builder.append(", currentHealthState=");
 		builder.append(currentHealthState);
 		builder.append(", timeTradeOffList=");
-		builder.append(Arrays.toString(timeTradeOffList));
+		builder.append((timeTradeOffList));
 		builder.append(", relationships=");
 		builder.append(relationships);
 		builder.append(", sortedAttributeData=");
 		builder.append(Arrays.toString(sortedAttributeData));
-		builder.append(", hashTable=");
-		builder.append(hashTable);
+//		builder.append(", hashTable=");
+//		builder.append(hashTable);
 		builder.append(", solution_array_counter=");
 		builder.append(solution_array_counter);
 		builder.append(", attributeSets=");

@@ -6,6 +6,13 @@
   <persistence-unit name="JPATEST" transaction-type="RESOURCE_LOCAL">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
     <class>com.solomon.rest.model.TestTable</class>
+    <class>com.solomon.rest.model.Patient</class>
+    <class>com.solomon.rest.model.Model</class>
+    <class>com.solomon.rest.model.OaLevel</class>
+    <class>com.solomon.rest.model.Scale</class>
+    <class>com.solomon.rest.model.JsonData</class>
+    <class>com.solomon.rest.model.HelloWorld</class>
+    <class>com.solomon.rest.model.HelloCategory</class>
     <properties>
       <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
             <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/solomon" />
