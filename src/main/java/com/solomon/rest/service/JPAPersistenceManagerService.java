@@ -58,8 +58,8 @@ public class JPAPersistenceManagerService {
 	        // A normal Hello World Construction
 	        // The normal Hello World
 	        HelloWorld aNormalHelloWorld = new HelloWorld();
-	        //aNormalHelloWorld.setId(1);
-	        aNormalHelloWorld.setDescription("Hello Nico !");
+//	        aNormalHelloWorld.setId(1);
+	        aNormalHelloWorld.setDescription("Hello!");
 	        // The normal Hello Category
 	        HelloCategory aNormalHelloCategory = new HelloCategory(aNormalHelloWorld);
 	        aNormalHelloCategory.setDesc("A normal Hello");
@@ -73,15 +73,15 @@ public class JPAPersistenceManagerService {
 	 
 	        // Retrieve
 	        // Hello World whose primary key is 1
-	        HelloWorld helloWorld = em.find(HelloWorld.class, 1);
-	        System.out.println(helloWorld);
-	        for (HelloCategory helloCategory:helloWorld.getHelloCategories()){
-	            System.out.println(helloCategory.getDesc());
-	        }
+	        //HelloWorld helloWorld = em.find(HelloWorld.class, 1);
+	        //System.out.println(helloWorld);
+	        //for (HelloCategory helloCategory:helloWorld.getHelloCategories()){
+	          //  System.out.println(helloCategory.getDesc());
+	        //}
 	 
 	 
 	        em.close();
-	        emf.close();
+	        //emf.close();
 	}
 	
 	public void updateValue(String valOld, String valNew) {
@@ -138,8 +138,9 @@ public class JPAPersistenceManagerService {
 			model.setAge(solomonRecord.getAge());
 			List<Scale> scales = new ArrayList<Scale>();
 			model.setScales(scales);
+			patient.addModel(model);
 			
-			/*
+			
 			HashMap<Integer,Scale> setIdMap = new HashMap<Integer,Scale>();
 			
 			for(AttributeSetData inputAttributeSetData : solomonRecord.getAttributeSetData())
@@ -171,16 +172,9 @@ public class JPAPersistenceManagerService {
 			    model.addScale(scale);
 			}
 			
-			*/
-//			model.setPatientBean(patient);
-			
-			
+				
 			em.getTransaction().begin();
-			em.merge(patient);
-//			em.flush();
-			System.out.println("Inserted ID:"+patient.getId());
-			patient.addModel(model);
-			em.merge(model);
+			em.merge(patient);			
 			em.getTransaction().commit();
 			em.close();
 			

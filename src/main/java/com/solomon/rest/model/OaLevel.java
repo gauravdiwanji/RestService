@@ -9,13 +9,13 @@ import javax.persistence.*;
  * The persistent class for the oa_level database table.
  * 
  */
-@Entity
+@Entity 
 @Table(name="oa_level")
 @NamedQuery(name="OaLevel.findAll", query="SELECT o FROM OaLevel o")
 public class OaLevel implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	@Id
+	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
 	private String id;
 
 	private String $$hashKey;

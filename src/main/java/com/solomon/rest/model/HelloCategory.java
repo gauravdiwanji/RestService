@@ -10,21 +10,32 @@ import java.io.Serializable;
 @Table(name="HELLO_CAT")
 public class HelloCategory implements Serializable {
  
- 
-    @Id
+	@Id 
+    @Column(name = "HELLO_CAT_ID")
+    private int id;
+	
+	@Basic()
     @Column(name = "CAT_DESC")
     private String desc;
  
-    @Id
+	@ManyToOne
     @JoinColumn(name= "HELLO_ID")
     private HelloWorld helloWorld;
  
-    public HelloCategory() {
+	public HelloCategory() {
     }
  
     public HelloCategory(HelloWorld helloWorld) {
         this.setHelloWorld(helloWorld);
     }
+    
+    public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
  
     public String getDesc() {
         return desc;
