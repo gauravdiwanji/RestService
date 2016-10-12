@@ -120,18 +120,123 @@ public class JPAPersistenceManagerService {
 		
 		try{
 			Model model = (Model) query.getSingleResult();
-			System.out.println("Here1");
+			System.out.println("Solomon Record Already Exists");
+			Patient patient = new Patient();
+			patient = model.getPatientBean();
+			patient.setName(solomonRecord.getUserName());
+			
+			List<Scale> scales = new ArrayList<Scale>();
+			scales = model.getScales();
+			
+			HashMap<Integer,Scale> setIdMap = new HashMap<Integer,Scale>();
+			for(Scale scale: scales)
+			{
+				setIdMap.put(Integer.valueOf(scale.getLabel()), scale);
+			}
+			
+			HashMap<Integer,List<OaLevel>> oaLevelMap = new HashMap<Integer,List<OaLevel>>();
+			
+			HashMap<Integer,List<OaLevel>> new_oaLevelMap = new HashMap<Integer,List<OaLevel>>();
+			
+			
+			List<Scale> new_scales = new ArrayList<Scale>();
+			
+			for(AttributeSetData inputAttributeSetData : solomonRecord.getAttributeSetData())
+			{
+				Scale scale;
+				if(!setIdMap.containsKey((inputAttributeSetData.getSetId())))
+				{
+					scale = new Scale();
+					scale.setLabel(Integer.toString(inputAttributeSetData.getSetId()));
+					List<OaLevel> oaLevels = new ArrayList<OaLevel>();
+					scale.setOaLevels(oaLevels);
+					oaLevelMap.put(inputAttributeSetData.getSetId(),oaLevels);
+					setIdMap.put(inputAttributeSetData.getSetId(),scale);
+				}
+				else
+				{
+					scale = setIdMap.get(inputAttributeSetData.getSetId());
+					if(!oaLevelMap.containsKey(inputAttributeSetData.getSetId()))
+					{
+						oaLevelMap.put(inputAttributeSetData.getSetId(),scale.getOaLevels());
+					}
+				}
+				
+				if(!new_scales.contains(scale))
+				{
+					new_scales.add(scale); //Add this directly to model
+					new_oaLevelMap.put(inputAttributeSetData.getSetId(), new ArrayList<OaLevel>());
+				}
+				
+				List<OaLevel> oaLevels = oaLevelMap.get(inputAttributeSetData.getSetId());
+				
+				if(oaLevels.size() != 0)
+				{
+					int exits_flag = 0;
+					for(OaLevel oalevel : oaLevels)
+					{
+								if(	oalevel.getLabel().equals(inputAttributeSetData.getTitle())
+									&&
+									oalevel.getPosition() == inputAttributeSetData.getPosition()
+									&&
+									oalevel.getWeight() == inputAttributeSetData.getRelativeWeight())
+								{
+									System.out.println("---------------In here!");
+									new_oaLevelMap.get(inputAttributeSetData.getSetId()).add(oalevel);
+									exits_flag++;
+									break;
+								}
+					} //end for
+								if(exits_flag == 0)
+								{
+									System.out.println("<---------------In else!");
+//									System.out.println(oalevel.getLabel()+"--"+inputAttributeSetData.getTitle()+"--"+oalevel.getLabel() == inputAttributeSetData.getTitle());
+//									System.out.println(oalevel.getPosition()+"--"+inputAttributeSetData.getPosition()+"--"+String.valueOf(oalevel.getPosition() == inputAttributeSetData.getPosition()));
+//									System.out.println(oalevel.getWeight()+"--"+inputAttributeSetData.getRelativeWeight()+"--"+ String.valueOf(oalevel.getWeight() == inputAttributeSetData.getRelativeWeight()));
+									OaLevel oaLevel = new OaLevel();
+									oaLevel.setLabel(inputAttributeSetData.getTitle());
+									oaLevel.setPosition(inputAttributeSetData.getPosition());
+									oaLevel.setWeight(inputAttributeSetData.getRelativeWeight());
+									oaLevel.setScaleBean(scale);
+									new_oaLevelMap.get(inputAttributeSetData.getSetId()).add(oaLevel);
+								}			
+					
+				}
+				else
+				{
+					OaLevel oaLevel = new OaLevel();
+					oaLevel.setLabel(inputAttributeSetData.getTitle());
+					oaLevel.setPosition(inputAttributeSetData.getPosition());
+					oaLevel.setWeight(inputAttributeSetData.getRelativeWeight());
+					oaLevel.setScaleBean(scale);
+					
+					new_oaLevelMap.get(inputAttributeSetData.getSetId()).add(oaLevel);
+				}
+				
+			}
+			
+			for(Scale scale : new_scales)
+			{
+				scale.setOaLevels(new_oaLevelMap.get(Integer.valueOf(scale.getLabel())));
+			}
+			
+			model.setScales(new_scales);
+			
+			em.getTransaction().begin();
+			em.merge(patient);			
+			em.getTransaction().commit();
+			em.close();
+						
 		}
 		catch (Exception e)
 		{
-			System.out.println("Here2 Error:"+solomonRecord.getModelName()+" doesnt exist"+e.getMessage());
+			System.out.println("Insert NEW Record -- Error:"+solomonRecord.getModelName()+" doesnt exist"+e.getMessage());
 			
 			Patient patient = new Patient();
 			patient.setName(solomonRecord.getUserName());
 			List<Model> models = new ArrayList<Model>();
 			patient.setModels(models);
-			
-			
+					
 			Model model = new Model();
 			model.setModelname(solomonRecord.getModelName());
 			model.setLocation(solomonRecord.getInterviewLocation());
@@ -139,7 +244,6 @@ public class JPAPersistenceManagerService {
 			List<Scale> scales = new ArrayList<Scale>();
 			model.setScales(scales);
 			patient.addModel(model);
-			
 			
 			HashMap<Integer,Scale> setIdMap = new HashMap<Integer,Scale>();
 			
@@ -171,8 +275,7 @@ public class JPAPersistenceManagerService {
 			for (Scale scale : setIdMap.values()) {
 			    model.addScale(scale);
 			}
-			
-				
+							
 			em.getTransaction().begin();
 			em.merge(patient);			
 			em.getTransaction().commit();
