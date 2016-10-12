@@ -220,6 +220,7 @@ public class JPAPersistenceManagerService {
 				scale.setOaLevels(new_oaLevelMap.get(Integer.valueOf(scale.getLabel())));
 			}
 			
+			model.setJson_data(solomonRecord.getJsonText());
 			model.setScales(new_scales);
 			
 			em.getTransaction().begin();
@@ -241,6 +242,7 @@ public class JPAPersistenceManagerService {
 			model.setModelname(solomonRecord.getModelName());
 			model.setLocation(solomonRecord.getInterviewLocation());
 			model.setAge(solomonRecord.getAge());
+			model.setJson_data(solomonRecord.getJsonText());
 			List<Scale> scales = new ArrayList<Scale>();
 			model.setScales(scales);
 			patient.addModel(model);

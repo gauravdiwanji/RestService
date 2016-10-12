@@ -30,7 +30,7 @@ public class Scale implements Serializable {
 	private int version;
 
 	//bi-directional many-to-one association to OaLevel
-	@OneToMany(mappedBy="scaleBean", cascade = CascadeType.PERSIST)
+	@OneToMany(mappedBy="scaleBean", cascade = CascadeType.PERSIST, orphanRemoval=true)
 	private List<OaLevel> oaLevels;
 
 	//bi-directional many-to-one association to Model

@@ -27,7 +27,7 @@ public class Patient implements Serializable {
 	private int version;
 
 	//bi-directional many-to-one association to Model
-	@OneToMany(mappedBy="patientBean", cascade = CascadeType.PERSIST)
+	@OneToMany(mappedBy="patientBean", cascade = CascadeType.PERSIST, orphanRemoval=true)
 	private List<Model> models;
 
 	public Patient() {

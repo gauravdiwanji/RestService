@@ -10,7 +10,6 @@
     <class>com.solomon.rest.model.Model</class>
     <class>com.solomon.rest.model.OaLevel</class>
     <class>com.solomon.rest.model.Scale</class>
-    <class>com.solomon.rest.model.JsonData</class>
     <class>com.solomon.rest.model.HelloWorld</class>
     <class>com.solomon.rest.model.HelloCategory</class>
     <properties>

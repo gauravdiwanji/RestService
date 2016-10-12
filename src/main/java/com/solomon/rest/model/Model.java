@@ -28,10 +28,9 @@ public class Model implements Serializable {
 	private String modelname;
 
 	private int version;
-
-	//bi-directional one-to-one association to JsonData
-	@OneToOne(mappedBy="model")
-	private JsonData jsonData;
+	
+	@Lob
+	private String json_data;
 
 	//bi-directional many-to-one association to Patient
 	@ManyToOne
@@ -39,7 +38,7 @@ public class Model implements Serializable {
 	private Patient patientBean;
 
 	//bi-directional many-to-one association to Scale
-	@OneToMany(mappedBy="modelBean", cascade = CascadeType.PERSIST)
+	@OneToMany(mappedBy="modelBean", cascade = CascadeType.PERSIST, orphanRemoval=true)
 	private List<Scale> scales;
 
 	public Model() {
@@ -93,12 +92,12 @@ public class Model implements Serializable {
 		this.version = version;
 	}
 
-	public JsonData getJsonData() {
-		return this.jsonData;
+	public String getJson_data() {
+		return this.json_data;
 	}
 
-	public void setJsonData(JsonData jsonData) {
-		this.jsonData = jsonData;
+	public void setJson_data(String data) {
+		this.json_data = data;
 	}
 
 	public Patient getPatientBean() {
