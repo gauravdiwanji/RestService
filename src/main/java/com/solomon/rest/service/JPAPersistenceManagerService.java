@@ -148,6 +148,7 @@ public class JPAPersistenceManagerService {
 				{
 					scale = new Scale();
 					scale.setLabel(Integer.toString(inputAttributeSetData.getSetId()));
+					scale.setModelBean(model);
 					List<OaLevel> oaLevels = new ArrayList<OaLevel>();
 					scale.setOaLevels(oaLevels);
 					oaLevelMap.put(inputAttributeSetData.getSetId(),oaLevels);
@@ -258,6 +259,7 @@ public class JPAPersistenceManagerService {
 					scale.setLabel(Integer.toString(inputAttributeSetData.getSetId()));
 					List<OaLevel> oaLevels = new ArrayList<OaLevel>();
 					scale.setOaLevels(oaLevels);
+					
 					setIdMap.put(inputAttributeSetData.getSetId(),scale);
 				}
 				else

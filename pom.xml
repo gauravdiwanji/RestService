@@ -55,9 +55,20 @@
     <artifactId>jersey-bean-validation</artifactId>
     <version>2.23.2</version>
 </dependency>
-
-	</dependencies>
+</dependencies>
   <build>
     <finalName>RestService</finalName>
+    <plugins>
+	<plugin>
+					<groupId>org.apache.tomcat.maven</groupId>
+					<artifactId>tomcat7-maven-plugin</artifactId>
+					<version>2.2</version>
+					<configuration>
+						<url>http://localhost:8080/manager/text</url>
+						<server>TomcatServer</server>
+						<path>/RestService</path>
+					</configuration>
+	</plugin>
+</plugins>
   </build>
 </project>
