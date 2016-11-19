@@ -1,0 +1,48 @@
+<!-- Content -->
+<div class="container">
+    <div class="row">
+    <div class="col-sm-6"><!-- Text Area -->
+        <div class= "well well-sm" >
+        <div class="inside inside-full-height">
+        <p style="margin-left: 50">
+         What would you label such a person?
+        <br><br>
+        </p>  
+                <form role="form" name="poleForm">
+                  <div class="form-group">
+                    <md-input-container class="md-block">
+                    <label>Describe here</label>
+                    <input required name="poleName" ng-model="poleName">
+                    <div ng-messages="poleForm.poleName.$error">
+                      <div ng-message="required">This is required.</div>
+                    </div>
+                    </md-input-container>
+                  </div>
+                  <button ng-click="nextButtonClick()" class="btn btn-default btn-block" ng-disabled="poleForm.poleName.$invalid">Next</button>
+<!--
+                        <span>
+                        count: {{firstName}} Full Name:{{fromService}}
+                        </span>
+-->
+                        </form>
+            <md-list>
+            <md-list-item ng-repeat="item in attributeSet">
+            {{item.setId}} {{item.title}} {{item.position}}<md-divider ></md-divider>
+            </md-list-item>
+            </md-list>
+            
+        </div>   
+        </div>
+
+    </div> <!-- End Text Area -->
+    <!-- Visualization Area -->
+    <div class="col-sm-6">
+        <div class= "well well-xs">
+        <img class="img-responsive" src="images/tamu_logo.png" alt="Chania">
+        </div>
+    </div>
+    <!-- End Visualization Area -->
+    </div>
+    {{Name}}
+</div>
+<!-- End Content -->

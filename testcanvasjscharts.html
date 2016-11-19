@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Solomon Application</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <!-- <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
+    -->
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-route.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-animate.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-aria.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-messages.min.js"></script>
+    
+     <!-- Angular Material -->
+      <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0-rc2/angular-material.min.css">
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-animate.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-aria.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-messages.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0-rc2/angular-material.min.js"></script>
+     <!-- Angular Material -->
+    
+    <!-- ng-Sortable -->
+    <script src="http://rubaxa.github.io/Sortable/Sortable.js"></script>
+    <script src="http://rubaxa.github.io/Sortable/ng-sortable.js"></script>
+    <!-- ng-Sortable -->
+    
+    <!--canvasJS script-->
+    <script type="text/javascript" src="./scripts/canvasjs.min.js"></script>
+    <script type="text/javascript" src="./scripts/jquery.canvasjs.min.js"></script>
+    <!--canvasJS script-->
+
+    <style>
+                .peopleTable {
+            background-color:#E8E8E8;
+            border-radius: 1em;
+            border: 0.1em solid #CCCCCC;
+            display: block;
+            float: left;
+            padding: 0.5em;
+        }
+    </style>
+</head>
+    
+<body>
+<div ng-app="solomonApp">
+    <div ng-include="'partials/common/navbarHeader.html'" ng-show="!userInfo"></div>
+<!--    <div ng-view></div>-->
+    <!-- Content -->
+<div class="container" ng-controller="n3_entryCntrl">
+    <div class="row">
+    <div class="col-sm-6"><!-- Text Area -->
+        <div class= "well well-sm" >
+        <div class="inside inside-full-height">
+        <p style="margin-left: 50">
+         Hello! How are ya? 
+            <br>Start: {{pole1}}
+            <br>End : {{pole2}}
+        <br>
+        {{message}}
+        </p>  
+                <br>
+                    <button ng-click="yesButtonClick()" class="btn btn-default btn-block" ng-disabled="userForm.username.$invalid">Yes</button>
+                    <button ng-click="noButtonClick()" class="btn btn-default btn-block" ng-disabled="userForm.username.$invalid">No</button>
+                    <button ng-click="cantButtonClick()" class="btn btn-default btn-block" ng-disabled="userForm.username.$invalid">Cant decide</button>
+                
+        </div>   
+        </div>
+
+    </div> <!-- End Text Area -->
+    <!-- Visualization Area -->
+    <div class="col-sm-6">
+        <div class= "well well-xs">
+        <h5>Results of treatment:</h5>
+        <div class="col-xs-8">
+        <table>
+        <tr><td>  
+        <strong>{{currentHigh}}</strong> out of 100 people (<img src="./images/somebodB.gif">) fall into the category:<br>
+        <i>{{currentLabel}}</i>
+        </td></tr>
+        <tr><td>
+        <br>
+        <div class="peopleTable">
+            <table>
+            <tr ng-repeat="week in rows">
+                    <td>
+                        <div ng-if="week[0] == 0">
+                        <img src="./images/somebodR.gif">
+                        </div>
+                        <div ng-if="week[0] == 1">
+                        <img src="./images/somebodB.gif">
+                        </div>
+                    </td>
+                    <td>
+                        <div ng-if="week[1] == 0">
+                        <img src="./images/somebodR.gif">
+                        </div>
+                        <div ng-if="week[1] == 1">
+                        <img src="./images/somebodB.gif">
+                        </div>
+                    </td>
+                    <td>
+                        <div ng-if="week[2] == 0">
+                        <img src="./images/somebodR.gif">
+                        </div>
+                        <div ng-if="week[2] == 1">
+                        <img src="./images/somebodB.gif">
+                        </div>
+                    </td>
+                        <td>
+                        <div ng-if="week[3] == 0">
+                        <img src="./images/somebodR.gif">
+                        </div>
+                        <div ng-if="week[3] == 1">
+                        <img src="./images/somebodB.gif">
+                        </div>
+                    </td>
+                    <td>
+                        <div ng-if="week[4] == 0">
+                        <img src="./images/somebodR.gif">
+                        </div>
+                        <div ng-if="week[4] == 1">
+                        <img src="./images/somebodB.gif">
+                        </div>
+                    </td>
+                    <td>
+                        <div ng-if="week[5] == 0">
+                        <img src="./images/somebodR.gif">
+                        </div>
+                        <div ng-if="week[5] == 1">
+                        <img src="./images/somebodB.gif">
+                        </div>
+                    </td>
+                        <td>
+                        <div ng-if="week[6] == 0">
+                        <img src="./images/somebodR.gif">
+                        </div>
+                        <div ng-if="week[6] == 1">
+                        <img src="./images/somebodB.gif">
+                        </div>
+                    </td>
+                    <td>
+                        <div ng-if="week[7] == 0">
+                        <img src="./images/somebodR.gif">
+                        </div>
+                        <div ng-if="week[7] == 1">
+                        <img src="./images/somebodB.gif">
+                        </div>
+                    </td>
+                    <td>
+                        <div ng-if="week[8] == 0">
+                        <img src="./images/somebodR.gif">
+                        </div>
+                        <div ng-if="week[8] == 1">
+                        <img src="./images/somebodB.gif">
+                        </div>
+                    </td>
+                    <td>
+                        <div ng-if="week[9] == 0">
+                        <img src="./images/somebodR.gif">
+                        </div>
+                        <div ng-if="week[9] == 1">
+                        <img src="./images/somebodB.gif">
+                        </div>
+                    </td>
+                    <td>
+                        <div ng-if="week[10] == 0">
+                        <img src="./images/somebodR.gif">
+                        </div>
+                        <div ng-if="week[10] == 1">
+                        <img src="./images/somebodB.gif">
+                        </div>
+                    </td>
+            </tr>
+            </table>
+        </div>
+            </td></tr>
+        <tr><td>
+        <br>
+        <strong>{{100 - currentHigh}}</strong> out of 100 people (<img src="./images/somebodR.gif">) fall into the category:<br>
+        <i>{{pole2}}</i>
+        </td></tr>
+        </table>
+        </div>
+        <div class="col-xs-4">
+        <div id="chartContainer" style="height: 300px; width: 100%;"></div>
+        </div>  
+        <img class="img-responsive" src="images/tamu_logo.png" alt="Chania">
+        </div>
+    </div>
+    <!-- End Visualization Area -->
+    </div>
+    {{Name}}
+</div>
+<!-- End Content -->
+ 
+    </div>
+</body>
+</html>

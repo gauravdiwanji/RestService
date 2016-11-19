@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/7.1.0/css/bootstrap-slider.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/7.1.0/css/bootstrap-slider.css" rel="stylesheet">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/7.1.0/bootstrap-slider.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/7.1.0/bootstrap-slider.min.js"></script>
+    <style>
+    </style>
+</head>
+<body style="background-color:#EBEBEB">
+
+<!-- Content -->
+<div class="container">
+    <div class="row">
+    <div class="col-sm-6"><!-- Text Area -->
+        <div class= "well well-sm" >
+        <div class="inside inside-full-height">
+        <p style="margin-left: 50">
+                <form role="form">
+                  <div class="form-group">
+                    <br> Please select your gender..
+                    <br>
+                    <div class="radio">
+                      <label><input type="radio" name="optradio">Male</label>
+                    </div>
+                    <div class="radio">
+                      <label><input type="radio" name="optradio">Female</label>
+                    </div>
+                    <br> What is your age?
+                    <br><br> (Please use the slider to indicate)
+                    <label for="age_slider">Age</label>
+                    <input id="age_slider" data-slider-id='ageSlider' type="text" data-slider-min="0" data-slider-max="100" data-slider-step="1" data-slider-value="14"/>
+                  </div>
+                  <button type="submit" class="btn btn-default">Next ..</button>
+                </form>
+        </div>
+        </div>
+
+    </div> <!-- End Text Area -->
+        <!-- Visualization Area -->
+    <div class="col-sm-6">
+        <div class= "well well-xs">
+        <img class="img-responsive" src="images/tamu_logo.png" alt="Chania">
+        </div>
+    </div>
+    <!-- End Visualization Area -->
+    </div>
+</div>
+<!-- End Content -->
+<script type="text/javascript">
+    	$(document).ready(function() {
+        $("#age_slider").slider({
+	   tooltip: 'always'
+        });
+
+        });
+</script>
+</body>
+</html>

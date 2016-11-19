@@ -1,0 +1,54 @@
+<!-- Content -->
+<div class="container">
+    <div class="row">
+    <div class="col-sm-6"><!-- Text Area -->
+        <div class= "well well-sm" >
+        <div class="inside inside-full-height">
+        <p style="margin-left: 50">
+        {{workingList}}
+        <br>
+        Now we need to see, in your view how important is each compared to the others.
+        <br> <br>
+        Suppose your health is described by labels shown.
+        <br><br>
+        In this hypothetical state of health, you have the <strong>worst</strong> condition in each of the aspect of health that you have told me. But for the <strong>most important</strong> aspect (the first label of the list), you are in the <strong>best</strong> possible condition.
+        <br><br>
+        Would you consider this state of health worse than death?
+        <br>
+        </p>
+            <br>
+                <form role="form">
+                  <div class="form-group">
+                    <div class="btn-group btn-group-justified">
+                      <div class="btn-group">
+                        <button type="button" ng-click="noButtonClick()" class="btn btn-default">No</button>
+                      </div>
+                      <div class="btn-group">
+                        <button type="button" ng-click="yesButtonClick()" class="btn btn-default">Yes</button>
+                      </div>
+                    </div>
+                    </div>
+                </form>
+        </div>   
+        </div>
+
+    </div> <!-- End Text Area -->
+        <!-- Visualization Area -->
+    <div class="col-sm-6">
+        <div class= "well well-xs">
+        <strong>The current state of health:</strong>
+<hr>
+    <md-content>
+            <md-list flex>
+            <md-list-item ng-repeat="item in workingList">
+                <span  ng-style="styleFunction(item.bold_flag)">{{item.title}}</span><md-divider ></md-divider>
+            </md-list-item>
+            </md-list>
+            </md-content>
+        <img class="img-responsive" src="images/tamu_logo.png" alt="Chania">
+        </div>
+    </div>
+    <!-- End Visualization Area -->
+    </div>
+</div>
+<!-- End Content -->

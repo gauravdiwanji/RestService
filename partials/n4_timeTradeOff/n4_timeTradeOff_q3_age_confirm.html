@@ -1,0 +1,60 @@
+<!-- Content -->
+<div class="container">
+    <div class="row">
+    <div class="col-sm-6"><!-- Text Area -->
+        <div class= "well well-sm" >
+        <div class="inside inside-full-height">
+        <span style="margin-left: 50">
+        Just to make sure I understand, let me rephrase what you told me.
+        <br><br>
+        You would prefer to be treated, so that your health is as described in the <strong><i>'After treatment'</i></strong> column, and you live for <strong>{{selectedYears}} years</strong>, instead of <strong>{{maxAge}} years</strong> in the untreated state: <strong><i>before treatment</i></strong>.
+        <br><br>
+        Is this correct?
+                    <br><br>
+                    <button ng-click="yesButtonClick()" class="btn btn-default btn-block" ng-disabled="userForm.username.$invalid">Yes, it is correct.</button>
+                    <button ng-click="noButtonClick()" class="btn btn-default btn-block" ng-disabled="userForm.username.$invalid">No, I'll rethink my choice.</button>
+        </span>
+
+        </div>
+        </div>
+    </div> <!-- End Text Area -->
+        <!-- Visualization Area -->
+    <div class="col-sm-6">
+        <div class= "well well-xs">
+            
+            <div class="row">
+    <div class="col-xs-6">
+
+    <md-content>
+            <md-list flex>
+            <md-list-item style="background-color:#3B1923;color:#f2f2f2;font-weight:bold;font-style:italic">Before Treatment<md-divider></md-divider></md-list-item>
+            <md-list-item ng-repeat="item in workingListS2">
+                <span  ng-style="styleFunction(item.bold_flag)">{{item.title}}</span><md-divider ></md-divider>
+            </md-list-item>
+            <md-list-item style="background-color:#efefef;font-weight:bold;font-style:italic">Expected life: {{maxAge}} years</md-list-item>
+            </md-list>
+    </md-content>
+    </div>
+    
+    <div class="col-xs-6">
+
+    <md-content>
+            <md-list flex>
+            <md-list-item style="background-color:#3B1923;color:#f2f2f2;font-weight:bold;font-style:italic">After Treatment<md-divider></md-divider></md-list-item>
+            <md-list-item ng-repeat="item in workingListS1">
+                <span  ng-style="styleFunction(item.bold_flag)">{{item.title}}</span><md-divider></md-divider>
+            </md-list-item>
+            <md-list-item style="background-color:#efefef;font-weight:bold;font-style:italic">Expected life: {{selectedYears}} years</md-list-item>
+            </md-list>
+    </md-content>
+    
+        </div>
+        </div>
+            
+        <img class="img-responsive" src="images/tamu_logo.png" alt="Chania">
+        </div>
+    </div>
+    <!-- End Visualization Area -->
+    </div>
+</div>
+<!-- End Content -->

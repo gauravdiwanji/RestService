@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+    <style>
+        .peopleTable {
+            background-color:#E8E8E8;
+            border-radius: 1em;
+            border: 0.1em solid #CCCCCC;
+            display: block;
+            float: left;
+            padding: 0.5em;
+        }
+    </style>
+</head>
+    
+<body>
+<div ng-app="solomonApp" ng-controller="mycontroller">
+<div class="peopleTable">
+<table>
+<tr ng-repeat="week in rows">
+        <td>
+            <div ng-if="week[0] == 0">
+            <img src="./images/somebodR.gif">
+            </div>
+            <div ng-if="week[0] == 1">
+            <img src="./images/somebodB.gif">
+            </div>
+        </td>
+        <td>
+            <div ng-if="week[1] == 0">
+            <img src="./images/somebodR.gif">
+            </div>
+            <div ng-if="week[1] == 1">
+            <img src="./images/somebodB.gif">
+            </div>
+        </td>
+        <td>
+            <div ng-if="week[2] == 0">
+            <img src="./images/somebodR.gif">
+            </div>
+            <div ng-if="week[2] == 1">
+            <img src="./images/somebodB.gif">
+            </div>
+        </td>
+            <td>
+            <div ng-if="week[3] == 0">
+            <img src="./images/somebodR.gif">
+            </div>
+            <div ng-if="week[3] == 1">
+            <img src="./images/somebodB.gif">
+            </div>
+        </td>
+        <td>
+            <div ng-if="week[4] == 0">
+            <img src="./images/somebodR.gif">
+            </div>
+            <div ng-if="week[4] == 1">
+            <img src="./images/somebodB.gif">
+            </div>
+        </td>
+        <td>
+            <div ng-if="week[5] == 0">
+            <img src="./images/somebodR.gif">
+            </div>
+            <div ng-if="week[5] == 1">
+            <img src="./images/somebodB.gif">
+            </div>
+        </td>
+            <td>
+            <div ng-if="week[6] == 0">
+            <img src="./images/somebodR.gif">
+            </div>
+            <div ng-if="week[6] == 1">
+            <img src="./images/somebodB.gif">
+            </div>
+        </td>
+        <td>
+            <div ng-if="week[7] == 0">
+            <img src="./images/somebodR.gif">
+            </div>
+            <div ng-if="week[7] == 1">
+            <img src="./images/somebodB.gif">
+            </div>
+        </td>
+        <td>
+            <div ng-if="week[8] == 0">
+            <img src="./images/somebodR.gif">
+            </div>
+            <div ng-if="week[8] == 1">
+            <img src="./images/somebodB.gif">
+            </div>
+        </td>
+        <td>
+            <div ng-if="week[9] == 0">
+            <img src="./images/somebodR.gif">
+            </div>
+            <div ng-if="week[9] == 1">
+            <img src="./images/somebodB.gif">
+            </div>
+        </td>
+        <td>
+            <div ng-if="week[10] == 0">
+            <img src="./images/somebodR.gif">
+            </div>
+            <div ng-if="week[10] == 1">
+            <img src="./images/somebodB.gif">
+            </div>
+        </td>
+</tr>
+</table>
+</div>
+<br>
+    {{rows}}
+    <hr>
+    <calender>
+    </calender>
+    <script>
+    var app = angular.module("solomonApp", ["ngRoute"]);
+        
+    app.controller('mycontroller', ['$scope', '$location',function($scope, $location)
+    {
+        $scope.test = "Test";
+
+        
+        $scope.listItems = [ 
+            0,0,0,0,0,0,0,0,0,0,
+            0,0,0,0,0,0,0,0,0,0,
+            0,0,0,0,0,0,0,0,0,0,
+            0,0,0,0,0,0,0,0,0,0,
+            0,0,0,0,0,0,0,0,0,0,
+            0,0,0,0,0,0,0,0,0,0,
+            0,0,0,0,0,0,0,0,0,0,
+            0,0,0,0,0,0,0,0,0,0,
+            0,0,0,0,0,0,0,0,0,0,
+            0,0,0,0,0,0,0,0,0,0            
+        ];
+        
+        $scope.input = 75;
+        
+        for (var j = 0; j < $scope.input ;)
+        {
+            var temp = Math.floor((Math.random() * 100) + 1);
+            
+            if($scope.listItems[temp] == 0)
+            {
+                $scope.listItems[temp] = 1;
+                j = j+1;
+            };
+            
+        };
+        
+     $scope.rows = [];
+        
+        var rowSpacer = 1;
+        
+            for (var i = 0; i < $scope.listItems.length; i++) {
+                if (i % 10 == 0) {
+                    $scope.rows.push([]);
+                    
+                    //Spacer: Inserting a space in every alternate row
+                    if(rowSpacer < 0)
+                    {
+                      $scope.rows[$scope.rows.length-1].push(2);  
+                    }
+                    rowSpacer = rowSpacer * (-1);
+                    // End spacer
+                    
+                }
+                $scope.rows[$scope.rows.length-1].push($scope.listItems[i]);
+            }   
+            
+    }]);
+    </script>
+    </div>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!-- Content -->
+<div class="container">
+    <div class="row">
+    <div class="col-sm-6"><!-- Text Area -->
+        <div class= "well well-sm" >
+        <div class="inside inside-full-height">
+        <span style="margin-left: 50; margin-top: 10">
+            {{timeTradeOffList}}
+            <hr>
+            Moving on, we are currently showing all the ideas that you have listed so far. Each pair of labels represents extremes of the various aspects of healthiness you have told me.
+            <br><br>
+            Please <strong>sort the labels</strong> according to how important you regard each aspect. Drag the labels and place the more important ones on the top.
+            <br><br>
+            Whenever you think that the labels are in an appropriate order, please click the button below to proceed.
+        </span>
+        <br><br>
+                <div class="btn-group btn-group-justified">
+                      <div class="btn-group">
+                        <button type="button" ng-click="proceedButtonClick()" class="btn btn-default" ng-disabled="poleForm.poleName.$invalid">It's in order now, let's proceed.</button>
+                      </div>
+<!--
+                    <div class="btn-group">
+                        <button type="button" ng-click="noButtonClick()" class="btn btn-default">No, can't think of any.</button>
+                      </div>
+-->
+                </div>
+        <br>   
+        </div>   
+        </div>
+
+    </div> <!-- End Text Area -->
+    <!-- Visualization Area -->
+    <div class="col-sm-6">
+        <div class= "well well-xs">
+<strong>You can rearrange the list:</strong>
+<hr>
+    <i>Most important</i><br><br>
+    <ul ng-sortable="{animation:150}" style="" class="list-group">
+        <li ng-repeat="item in timeTradeOffList" class="list-group-item">
+            
+                
+                <button class="btn btn-block btn-default" style=" width: 100%;
+                                white-space: nowrap;
+                                overflow: hidden;
+                                text-overflow: ellipsis;" >{{item.pole1}}   
+                                                <md-icon class="s24" md-svg-src = './images/svg/loop.svg' class="md-secondary md-hue-3" style="width: 1.3em; height: 1.3em;margin-left:0.5em; margin-right:0.5em;"></md-icon>
+
+                                   {{item.pole2}}</button>
+               
+            
+      </li>
+    </ul>
+    <i>Least important</i>
+        <img class="img-responsive" src="images/tamu_logo.png" alt="Chania">
+        </div>
+    </div>
+    <!-- End Visualization Area -->
+    </div>
+    {{Name}}
+</div>
+<!-- End Content -->

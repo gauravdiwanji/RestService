@@ -1,0 +1,47 @@
+<!-- Not Used -->
+<!-- Content -->
+<div class="container">
+    <div class="row">
+    <div class="col-sm-6"><!-- Text Area -->
+        <div class= "well well-sm" >
+        <div class="inside inside-full-height">
+        <p style="margin-left: 50">
+        Hmm.. Let's pick some other relationships then.
+        <br> <br>
+        Click on the trash button next to the relationship that doesn't apply to you.<br>
+        <br>
+        You may continue doing so until you can think of one person for EACH of the relations shown, or the list runs out.
+        <br> <br>
+        Click next to continue.
+        </p>
+<br>
+            
+                <form role="form">
+                  <div class="form-group">
+                      <button ng-click="nextButtonClick()" class="btn btn-default btn-block">Next</button>
+                    </div>
+                </form>
+<!--            Interview Lcoation: {{interviewLocation}}-->
+        </div>   
+        </div>
+
+    </div> <!-- End Text Area -->
+        <!-- Visualization Area -->
+    <div class="col-sm-6">
+        <div class= "well well-xs">
+            <md-content>
+            <md-list flex>
+            <md-list-item ng-repeat="item in relationships | limitTo:3">
+            {{item.title}}
+            <md-icon md-svg-src = './images/svg/trash.svg'  ng-click="removeRelationship($index)" aria-label="Send Email" class="md-secondary md-hue-3" ></md-icon>
+            <md-divider ></md-divider>
+            </md-list-item>
+            </md-list>
+            </md-content>
+        <img class="img-responsive" src="images/tamu_logo.png" alt="Chania">
+        </div>
+    </div>
+    <!-- End Visualization Area -->
+    </div>
+</div>
+<!-- End Content -->

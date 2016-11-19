@@ -1,0 +1,42 @@
+<!-- Content -->
+<div class="container">
+    <div class="row">
+    <div class="col-sm-6"><!-- Text Area -->
+        <div class= "well well-sm" >
+        <div class="inside inside-full-height">
+        <p style="margin-left: 50">
+        Hello! How are you?
+        <br>Please enter your details.
+        </p>  
+                <form role="form" name="userForm">
+                  <div class="form-group">
+                    <label for="firstName">First name</label>
+                    <input type="text" class="form-control" id="firstName" ng-model="firstName" required name="username">
+                    <br>
+                    <label for="lastName">Last name</label>
+                    <input type="text" class="form-control" id="lastName" ng-model="lastName" required name="username">
+                    <br>
+                    
+                    <label for="DOB">Date of Birth</label>
+                    <input type="date" class="form-control" id="DOB" ng-model="dateOfBirth" required 
+                    name="username" min="1900-01-02" max="2016-12-31">
+                    
+                    </div>
+                <br>
+                  <button ng-click="nextButtonClick()" class="btn btn-default btn-block" ng-disabled="userForm.username.$invalid">Next</button>
+                </form>
+        </div>   
+        </div>
+
+    </div> <!-- End Text Area -->
+    <!-- Visualization Area -->
+    <div class="col-sm-6">
+        <div class= "well well-xs">
+        <img class="img-responsive" src="images/tamu_logo.png" alt="Chania">
+        </div>
+    </div>
+    <!-- End Visualization Area -->
+    </div>
+    {{Name}}
+</div>
+<!-- End Content -->

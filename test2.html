@@ -1,0 +1,39 @@
+<h1>BananaXXX<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
+    <style>
+    </style>
+</head>
+    
+<body>
+<div ng-app="solomonApp">
+    <div ng-include="'partials/common/navbarHeader.html'" ng-show="!userInfo"></div>
+    <a href="#banana">Banana</a>
+<a href="#tomato">Tomato</a>
+    <div ng-view></div>
+    <script>
+    var app = angular.module("solomonApp", ["ngRoute"]);
+    app.config(function($routeProvider) {
+        $routeProvider
+        .when("/banana", {
+            template : "<h1>Banana</h1><p>Bananas contain around 75% water.</p>"
+        })
+        .when("[#,/]", {
+            templateUrl : "/partials/common/intro_name.html"
+        })
+        .otherwise({
+            templateUrl : "/partials/common/intro_name.html"
+        });
+    });
+    </script>
+    </div>
+</body>
+</html></h1><p>Bananas contain around 75% water.</p>

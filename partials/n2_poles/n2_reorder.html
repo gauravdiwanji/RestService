@@ -1,0 +1,77 @@
+<!-- Content -->
+<div class="container">
+    <div class="row">
+    <div class="col-sm-6"><!-- Text Area -->
+        <div class= "well well-sm" >
+        <div class="inside inside-full-height">
+        <p style="margin-left: 50; margin-top: 10">
+            Is this list correct?
+        <br><br>
+            If not, you can :
+            <ul>
+                <li><strong>Reorder the labels, from most healthy to least healthy</strong> <br>Drag and drop</li><br>
+                <li><strong>Remove an item</strong>  <br>Click on the trash icon</li><br>
+                <li><strong>Add an item</strong>  <br>Click on the + icon</li><br>
+                <li><strong>Edit a label</strong>  <br>Click on the pencil icon</li><br>
+            </ul>
+            </p>
+                <div class="btn-group btn-group-justified">
+                      <div class="btn-group">
+                        <button type="button" ng-click="yesButtonClick()" class="btn btn-default" ng-disabled="poleForm.poleName.$invalid">It's correct now, let's proceed.</button>
+                      </div>
+<!--
+                    <div class="btn-group">
+                        <button type="button" ng-click="noButtonClick()" class="btn btn-default">No, can't think of any.</button>
+                      </div>
+-->
+                </div>
+            
+            <md-list>
+            <md-list-item ng-repeat="item in attributeSet">
+            {{item.setId}} {{item.title}} {{item.position}}<md-divider ></md-divider>
+            </md-list-item>
+            </md-list>
+            
+        </div>   
+        </div>
+
+    </div> <!-- End Text Area -->
+    <!-- Visualization Area -->
+    <div class="col-sm-6">
+        <div class= "well well-xs">
+<strong>You can rearrange the list:</strong>
+<hr>
+    <i>Most healthy</i><br><br>
+    <ul ng-sortable="{animation:150}" style="" class="list-group">
+        <li ng-repeat="item in attributeSet" class="list-group-item">
+            <div class="row">
+                <div class="col-xs-8">
+                <button class="btn btn-block btn-default" style=" width: 100%;
+                                white-space: nowrap;
+                                overflow: hidden;
+                                text-overflow: ellipsis;" >{{item.title}}</button>
+                </div>
+                <div class="col-xs-2">
+            <md-icon class="s16" md-svg-src = './images/svg/pencil.svg' ng-click="showPrompt($event,$index)" aria-label="edit label" class="md-secondary md-hue-3" style="width: 1.3em; height: 1.3em;"></md-icon>
+                </div>
+                <div class="col-xs-2">
+                <md-icon class="s24" md-svg-src = './images/svg/trash.svg'  ng-click="showConfirmDelete($event,$index)" aria-label="remove label" class="md-secondary md-hue-3" style="width: 1.3em; height: 1.3em;"></md-icon>
+                </div>
+            </div>
+      </li>
+    </ul>
+        <ul class="list-group">
+        <li class="list-group-item">
+        <md-icon class="s24" md-svg-src = './images/svg/plus.svg'  ng-click="showAddLabel($event)" aria-label="remove label" class="md-secondary md-hue-3" style="width: 1.3em; height: 1.3em;"></md-icon>
+        <span style="margin-left: 1em" ng-click="showAddLabel($event)" ><i>Add label</i></span>
+        </li>
+        </ul>
+    <i>Least healthy</i>
+        <img class="img-responsive" src="images/tamu_logo.png" alt="Chania">
+        </div>
+    </div>
+    <!-- End Visualization Area -->
+    </div>
+    {{Name}}
+</div>
+<!-- End Content -->

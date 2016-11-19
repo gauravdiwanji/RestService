@@ -1,0 +1,41 @@
+<!-- Content -->
+<div class="container">
+    <div class="row">
+    <div class="col-sm-6"><!-- Text Area -->
+        <div class= "well well-sm" >
+        <div class="inside inside-full-height">
+        <p style="margin-left: 50">
+        Okay, we will start from scratch then. Here is a new ID for this session.
+        <br><strong>{{sessionId}}</strong><br>
+        <br>
+        Please copy it down, you will need the ID to continue an interrupted session.       
+        Where is this interview being conducted?           
+        <br> <br>
+        </p>
+
+                <form role="form" name="locationForm">
+                  <div class="form-group">
+                    <label for="name">Location</label>
+                    <input type="text" class="form-control" id="location" ng-model="interviewLocation" required name="location">
+                  </div>
+                <br>
+                  <button ng-click="nextButtonClick()" class="btn btn-default btn-block" ng-disabled="locationForm.location.$invalid">Next</button>
+                </form>
+<!--
+            {{firstName}}
+            <br>sesionId:{{sessionId}}
+-->
+        </div>   
+        </div>
+
+    </div> <!-- End Text Area -->
+        <!-- Visualization Area -->
+    <div class="col-sm-6">
+        <div class= "well well-xs">
+        <img class="img-responsive" src="images/tamu_logo.png" alt="Chania">
+        </div>
+    </div>
+    <!-- End Visualization Area -->
+    </div>
+</div>
+<!-- End Content -->

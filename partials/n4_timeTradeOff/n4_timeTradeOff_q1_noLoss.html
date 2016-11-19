@@ -1,0 +1,92 @@
+<!-- Content -->
+<div class="container">
+    <div class="row">
+    <div class="col-sm-6"><!-- Text Area -->
+        <div class= "well well-sm" >
+        <div class="inside inside-full-height">
+{{applicationState}}{{timeTradeOffList}}
+<!--    -------------->
+        <div ng-if="applicationState == 1">
+        <p style="margin-left: 50">
+        Let's move on.
+        <br> <br>
+        Suppose you are in a different health state, as described by the labels under <i>before treatment</i>.
+        <br><br>
+        In this state, you have the <strong>worst</strong> for each aspect of healthiness, except for that aspect <strong><i>"{{currentLabelPole1}}"</i></strong>, which indicates the <strong>best</strong> possible state of health.
+        <br><br>
+        Supoose again, that there was a <strong>treatment</strong> which could change one aspect of health, from <strong><i>"{{timeTradeOffList[0].pole2}}"</i></strong> to <strong><i>"{{timeTradeOffList[0].pole1}}"</i></strong>, but makes you <strong><i>"{{currentLabelPole2}}"</i></strong> from <strong><i>"{{currentLabelPole1}}"</i></strong>.
+        <br><br>
+        If such a painless treatment existed, which would take you from the first state of health to the second, <strong>without any side effects</strong>, would you consider taking it?
+        <br>
+        </p>
+            <br>
+                    <button ng-click="yesButtonClick()" class="btn btn-default btn-block" ng-disabled="userForm.username.$invalid">Yes</button>
+                    <button ng-click="noButtonClick()" class="btn btn-default btn-block" ng-disabled="userForm.username.$invalid">No</button>
+                    <button ng-click="cantButtonClick()" class="btn btn-default btn-block" ng-disabled="userForm.username.$invalid">Cant decide</button>
+        </div>
+<!--    ------------->
+        <div ng-if=" applicationState == 2">
+        <p style="margin-left: 50">
+        Looking at your response, does it mean that being in a state with <strong><i>"{{currentLabelPole1}}"</i></strong> has the about the same importance to you as being in one with <strong><i>"{{timeTradeOffList[0].pole1}}"</i></strong>?
+        <br><br>
+        If not, we will try and re-order your priorities again. We might have to start over for that.
+        </p>
+        <br>
+        <button ng-click="yesButtonClick()" class="btn btn-default btn-block" ng-disabled="userForm.username.$invalid">Yes, they are equally important to me.</button>
+        <button ng-click="noButtonClick()" class="btn btn-default btn-block" ng-disabled="userForm.username.$invalid">No, I would like to re-order my priorities.</button>
+        <button ng-click="cantButtonClick()" class="btn btn-default btn-block" ng-disabled="userForm.username.$invalid">Nevermind, I'll reconsider the question.</button>
+        </div>
+<!--    ------------->         
+        <div ng-if=" applicationState == 3">
+        <p style="margin-left: 50">
+        Very well then. 
+        <br><br>
+        If the this treatment shortened your life by a few years, you you still take it?
+        </p>
+        <br>
+        <button ng-click="yesButtonClick()" class="btn btn-default btn-block" ng-disabled="userForm.username.$invalid">Yes, I would.</button>
+        <button ng-click="noButtonClick()" class="btn btn-default btn-block" ng-disabled="userForm.username.$invalid">No, I'll pass.</button>
+        <button ng-click="cantButtonClick()" class="btn btn-default btn-block" ng-disabled="userForm.username.$invalid">I can't seem to decide.</button>
+        </div>
+<!--    ------------->
+            
+        </div>   
+        </div>
+
+    </div> <!-- End Text Area -->
+        <!-- Visualization Area -->
+    <div class="col-sm-6">
+        <div class= "well well-xs">
+    <div class="row">
+    <div class="col-xs-6">
+
+    <md-content>
+            <md-list flex>
+            <md-list-item style="background-color:#3B1923;color:#f2f2f2;font-weight:bold;font-style:italic">Before Treatment<md-divider></md-divider></md-list-item>
+            <md-list-item ng-repeat="item in workingListS2">
+                <span  ng-style="styleFunction(item.bold_flag)">{{item.title}}</span><md-divider ></md-divider>
+            </md-list-item>
+            </md-list>
+    </md-content>
+    </div>
+    
+    <div class="col-xs-6">
+
+    <md-content>
+            <md-list flex>
+            <md-list-item style="background-color:#3B1923;color:#f2f2f2;font-weight:bold;font-style:italic">After Treatment<md-divider></md-divider></md-list-item>
+            <md-list-item ng-repeat="item in workingListS1">
+                <span  ng-style="styleFunction(item.bold_flag)">{{item.title}}</span><md-divider></md-divider>
+            </md-list-item>
+            </md-list>
+    </md-content>
+    
+        </div>
+        </div>
+        <img class="img-responsive" src="images/tamu_logo.png" alt="Chania">
+        </div>
+    </div>
+    <!-- End Visualization Area -->
+    </div>
+</div>
+<!-- End Content -->

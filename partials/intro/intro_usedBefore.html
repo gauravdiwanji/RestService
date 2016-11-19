@@ -1,0 +1,53 @@
+<!-- Content -->
+<div class="container">
+    <div class="row">
+    <div class="col-sm-6"><!-- Text Area -->
+        <div class= "well well-sm" >
+        <div class="inside inside-full-height">
+        <p style="margin-left: 50">
+        Welcome, {{firstName}}.
+        <br>
+        Please choose the interview you want to proceed with: <br><br>
+        </p>
+        <div class="panel-group">
+            <div class="panel panel-default" ng-repeat="model in modelList">
+            <div class="panel-heading"><b><i>{{model.modelname}}</i></b></div>
+            <div class="panel-body">
+            <span ng-if="model.completed == 1">
+                <i>Interview completed</i> on {{model.completiondate}}.
+            </span>
+            <span ng-if="model.completed != 1">
+            <i>Not completed.</i>
+                <br><b>Started on:</b> {{model.creationdate}}
+                <br><b>Last accessed on:</b> {{model.updatedate}}
+            <br><br>
+            <button type="button" ng-click="selectButtonClick(model.id)" class="btn btn-default btn-block">Continue</button>
+            </span>
+            </div>
+            </div>
+            <br>
+            <div class="panel panel-default">
+            <div class="panel-heading"><b><i>
+            <md-icon class="s24" md-svg-src = './images/svg/plus.svg' class="md-secondary md-hue-3" style="width: 1em; height: 1.3em;"></md-icon> New interview</i></b></div>
+            <div class="panel-body">Begin with a new interview.
+            <br><br>
+                <button type="button" ng-click="newButtonClick()" class="btn btn-default btn-block">Let's go</button>   
+            </div>
+            </div>
+        </div>
+        <br>
+<!--            Interview Lcoation: {{interviewLocation}}-->
+        </div>   
+        </div>
+
+    </div> <!-- End Text Area -->
+        <!-- Visualization Area -->
+    <div class="col-sm-6">
+        <div class= "well well-xs">
+        <img class="img-responsive" src="images/tamu_logo.png" alt="Chania">
+        </div>
+    </div>
+    <!-- End Visualization Area -->
+    </div>
+</div>
+<!-- End Content -->

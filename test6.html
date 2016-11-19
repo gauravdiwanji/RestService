@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+    <style>
+        .peopleTable {
+            background-color:#E8E8E8;
+            border-radius: 1em;
+            border: 0.1em solid #CCCCCC;
+            display: block;
+            float: left;
+            padding: 0.5em;
+        }
+    </style>
+</head>
+    
+<body>
+<div ng-app="solomonApp" ng-controller="mycontroller">
+<div class="peopleTable">
+<table>
+<tr ng-repeat="week in rows">
+        <td>
+            <div ng-if="week[0] == 0">
+            <img src="./images/somebodR.gif">
+            </div>
+            <div ng-if="week[0] == 1">
+            <img src="./images/somebodB.gif">
+            </div>
+        </td>
+        <td>
+            <div ng-if="week[1] == 0">
+            <img src="./images/somebodR.gif">
+            </div>
+            <div ng-if="week[1] == 1">
+            <img src="./images/somebodB.gif">
+            </div>
+        </td>
+        <td>
+            <div ng-if="week[2] == 0">
+            <img src="./images/somebodR.gif">
+            </div>
+            <div ng-if="week[2] == 1">
+            <img src="./images/somebodB.gif">
+            </div>
+        </td>
+            <td>
+            <div ng-if="week[3] == 0">
+            <img src="./images/somebodR.gif">
+            </div>
+            <div ng-if="week[3] == 1">
+            <img src="./images/somebodB.gif">
+            </div>
+        </td>
+        <td>
+            <div ng-if="week[4] == 0">
+            <img src="./images/somebodR.gif">
+            </div>
+            <div ng-if="week[4] == 1">
+            <img src="./images/somebodB.gif">
+            </div>
+        </td>
+        <td>
+            <div ng-if="week[5] == 0">
+            <img src="./images/somebodR.gif">
+            </div>
+            <div ng-if="week[5] == 1">
+            <img src="./images/somebodB.gif">
+            </div>
+        </td>
+            <td>
+            <div ng-if="week[6] == 0">
+            <img src="./images/somebodR.gif">
+            </div>
+            <div ng-if="week[6] == 1">
+            <img src="./images/somebodB.gif">
+            </div>
+        </td>
+        <td>
+            <div ng-if="week[7] == 0">
+            <img src="./images/somebodR.gif">
+            </div>
+            <div ng-if="week[7] == 1">
+            <img src="./images/somebodB.gif">
+            </div>
+        </td>
+        <td>
+            <div ng-if="week[8] == 0">
+            <img src="./images/somebodR.gif">
+            </div>
+            <div ng-if="week[8] == 1">
+            <img src="./images/somebodB.gif">
+            </div>
+        </td>
+        <td>
+            <div ng-if="week[9] == 0">
+            <img src="./images/somebodR.gif">
+            </div>
+            <div ng-if="week[9] == 1">
+            <img src="./images/somebodB.gif">
+            </div>
+        </td>
+        <td>
+            <div ng-if="week[10] == 0">
+            <img src="./images/somebodR.gif">
+            </div>
+            <div ng-if="week[10] == 1">
+            <img src="./images/somebodB.gif">
+            </div>
+        </td>
+</tr>
+</table>
+</div>
+<br>
+<form role="form" name="userForm">
+                  <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" class="form-control" id="name" ng-model="name" required name="username">
+                  </div>
+                <br>
+                  <button ng-click="nextButtonClick()" class="btn btn-default btn-block" ng-disabled="userForm.username.$invalid">Next</button>
+    </form>
+    The name is {{name}}
+    <script>
+    function Person(fName, lName, age){
+        this.FirstName = [fName,fName,fName,fName];
+        this.LastName = lName;
+        this.Age = age;
+        this.getName = function()
+        {
+        return this.FirstName+' '+this.LastName;
+        };
+    }
+    var app = angular.module("solomonApp", ["ngRoute"]);
+        
+    app.controller('mycontroller', ['$scope', '$location',function($scope, $location)
+    {
+//        $scope.name = 'Test';
+
+        var name = new Person('Joshua', 'Pepper', '25');
+        
+        name.FirstName = 'John';
+    
+        sessionStorage.setItem('example', JSON.stringify(name));
+        
+    $scope.name = sessionStorage.clickcount;
+        
+       $scope.nextButtonClick = function()
+       {
+           $scope.name = $scope.name+'XXX';
+           sessionStorage.clickcount = $scope.name;
+           
+        var temp = sessionStorage.getItem('example');
+        var viewName = $.parseJSON(temp);
+        $scope.name = viewName.FirstName;
+       };
+    }]);
+    </script>
+    </div>
+</body>
+</html>

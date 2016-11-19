@@ -1,0 +1,156 @@
+   <!-- Content -->
+<div class="container">
+    <div class="row">
+    <div class="col-sm-6"><!-- Text Area -->
+        <div class= "well well-sm" >
+        <div class="inside inside-full-height">
+        <span style="margin-left: 50">
+        {{attributeSetData}}
+        <hr>
+        <strong>{{messageNewLoop}}</strong>
+        <br>
+        Working on the health attribute <strong><i>"{{currentLabel}}"</i></strong> in the list,
+<!--        <span ng-repeat="item in currentDimensionList"><i>"{{item.title}}",</i></span>-->
+        <i>"{{pole1}}", . . . ,"{{pole2}}"</i>
+        let's consider the question below.
+        <br><br>
+        Suppose a painless treatment existed which causes "{{currentLabel}}" people to become "{{pole1}}".
+        However, some people receiving this treatment also became "{{pole2}}".<br><br>
+<!--        {{message}}-->
+        <strong>{{currentHigh}}</strong> out of a 100 people become <strong>"{{pole1}}"</strong> from <strong>"{{currentLabel}}"</strong> as a result of this treatment, while the remaining <strong>{{100 - currentHigh}}</strong> people become <strong>"{{pole2}}"</strong>.
+        <br><br> Would you consider taking such a treatment?
+        </span>
+        <br>
+                <br>
+                    <button ng-click="yesButtonClick()" class="btn btn-default btn-block" ng-disabled="userForm.username.$invalid">Yes</button>
+                    <button ng-click="noButtonClick()" class="btn btn-default btn-block" ng-disabled="userForm.username.$invalid">No</button>
+                    <button ng-click="cantButtonClick()" class="btn btn-default btn-block" ng-disabled="userForm.username.$invalid">Cant decide</button>
+                
+        </div>   
+        </div>
+
+    </div> <!-- End Text Area -->
+    <!-- Visualization Area -->
+    <div class="col-sm-6">
+        <div class= "well well-xs">
+        <h5>Results of treatment:</h5>
+        <div class="col-xs-9">
+        <table>
+        <tr><td>  
+        <strong>{{currentHigh}}</strong> out of 100 people (<img src="./images/somebodB.gif">) become<br>
+        <i><strong>"{{pole1}}"</strong></i>, from <i>"{{currentLabel}}"</i>
+        </td></tr>
+        <tr><td>
+        <br>
+        <div class="peopleTable">
+            <table>
+            <tr ng-repeat="week in rows">
+                    <td>
+                        <div ng-if="week[0] == 0">
+                        <img src="./images/somebodR.gif">
+                        </div>
+                        <div ng-if="week[0] == 1">
+                        <img src="./images/somebodB.gif">
+                        </div>
+                    </td>
+                    <td>
+                        <div ng-if="week[1] == 0">
+                        <img src="./images/somebodR.gif">
+                        </div>
+                        <div ng-if="week[1] == 1">
+                        <img src="./images/somebodB.gif">
+                        </div>
+                    </td>
+                    <td>
+                        <div ng-if="week[2] == 0">
+                        <img src="./images/somebodR.gif">
+                        </div>
+                        <div ng-if="week[2] == 1">
+                        <img src="./images/somebodB.gif">
+                        </div>
+                    </td>
+                        <td>
+                        <div ng-if="week[3] == 0">
+                        <img src="./images/somebodR.gif">
+                        </div>
+                        <div ng-if="week[3] == 1">
+                        <img src="./images/somebodB.gif">
+                        </div>
+                    </td>
+                    <td>
+                        <div ng-if="week[4] == 0">
+                        <img src="./images/somebodR.gif">
+                        </div>
+                        <div ng-if="week[4] == 1">
+                        <img src="./images/somebodB.gif">
+                        </div>
+                    </td>
+                    <td>
+                        <div ng-if="week[5] == 0">
+                        <img src="./images/somebodR.gif">
+                        </div>
+                        <div ng-if="week[5] == 1">
+                        <img src="./images/somebodB.gif">
+                        </div>
+                    </td>
+                        <td>
+                        <div ng-if="week[6] == 0">
+                        <img src="./images/somebodR.gif">
+                        </div>
+                        <div ng-if="week[6] == 1">
+                        <img src="./images/somebodB.gif">
+                        </div>
+                    </td>
+                    <td>
+                        <div ng-if="week[7] == 0">
+                        <img src="./images/somebodR.gif">
+                        </div>
+                        <div ng-if="week[7] == 1">
+                        <img src="./images/somebodB.gif">
+                        </div>
+                    </td>
+                    <td>
+                        <div ng-if="week[8] == 0">
+                        <img src="./images/somebodR.gif">
+                        </div>
+                        <div ng-if="week[8] == 1">
+                        <img src="./images/somebodB.gif">
+                        </div>
+                    </td>
+                    <td>
+                        <div ng-if="week[9] == 0">
+                        <img src="./images/somebodR.gif">
+                        </div>
+                        <div ng-if="week[9] == 1">
+                        <img src="./images/somebodB.gif">
+                        </div>
+                    </td>
+                    <td>
+                        <div ng-if="week[10] == 0">
+                        <img src="./images/somebodR.gif">
+                        </div>
+                        <div ng-if="week[10] == 1">
+                        <img src="./images/somebodB.gif">
+                        </div>
+                    </td>
+            </tr>
+            </table>
+        </div>
+            </td></tr>
+        <tr><td>
+        <br>
+        <strong>{{100 - currentHigh}}</strong> out of 100 people (<img src="./images/somebodR.gif">) become<br>
+            <i><strong>"{{pole2}}"</strong></i>, from <i>"{{currentLabel}}"</i>
+        </td></tr>
+        </table>
+        </div>
+        <div class="col-xs-3">
+        <div id="chart_div" style="float: left; margin-top: -40px;"></div>
+        </div>  
+        <img class="img-responsive" src="images/tamu_logo.png" alt="Chania">
+        </div>
+    </div>
+    <!-- End Visualization Area -->
+    </div>
+</div>
+<!-- End Content -->

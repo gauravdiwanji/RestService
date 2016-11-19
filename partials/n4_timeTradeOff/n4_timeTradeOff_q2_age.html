@@ -1,0 +1,70 @@
+<!-- Content -->
+<div class="container">
+    <div class="row">
+    <div class="col-sm-6"><!-- Text Area -->
+        <div class= "well well-sm" >
+        <div class="inside inside-full-height">
+        <span style="margin-left: 50">
+        Suppose for the health state described in the first column, the average life expectancy is <strong>{{maxAge}}</strong> years.
+        <br><br>
+        Keeping in mind that after the treatment, your heatlth will be as described in the second column, please onsider the following question.
+        <br><br>
+        If the life span after the treatment was shorter than <strong>{{maxAge}}</strong> years, at what point would you be no longer interested in the treatment?
+        <br><br>
+        <form role="form" name="ageForm">
+        <strong>Life span (years):</strong>
+        <md-slider-container>
+                        <md-slider flex ng-model="age" min="0" max="{{maxAge}}" aria-label="green" id="green-slider" class="md-accent" required>
+                        </md-slider><md-input-container>
+                        <input flex type="number" ng-model="age">
+                        </md-input-container>
+        </md-slider-container>
+        <i>Life span reduced by <strong>{{maxAge - age}}</strong> years.</i>
+        <br><br>
+        <button ng-click="yesButtonClick()" class="btn btn-default btn-block" ng-disabled="ageForm.$invalid" >Proceed</button>
+        </form>
+        
+        </span>
+        </div>
+        </div>
+    </div> <!-- End Text Area -->
+        <!-- Visualization Area -->
+    <div class="col-sm-6">
+        <div class= "well well-xs">
+            
+            <div class="row">
+    <div class="col-xs-6">
+
+    <md-content>
+            <md-list flex>
+            <md-list-item style="background-color:#3B1923;color:#f2f2f2;font-weight:bold;font-style:italic">Before Treatment<md-divider></md-divider></md-list-item>
+            <md-list-item ng-repeat="item in workingListS2">
+                <span  ng-style="styleFunction(item.bold_flag)">{{item.title}}</span><md-divider ></md-divider>
+            </md-list-item>
+            <md-list-item style="background-color:#efefef;font-weight:bold;font-style:italic">Expected life: {{maxAge}} years</md-list-item>
+            </md-list>
+    </md-content>
+    </div>
+    
+    <div class="col-xs-6">
+
+    <md-content>
+            <md-list flex>
+            <md-list-item style="background-color:#3B1923;color:#f2f2f2;font-weight:bold;font-style:italic">After Treatment<md-divider></md-divider></md-list-item>
+            <md-list-item ng-repeat="item in workingListS1">
+                <span  ng-style="styleFunction(item.bold_flag)">{{item.title}}</span><md-divider></md-divider>
+            </md-list-item>
+            <md-list-item style="background-color:#efefef;font-weight:bold;font-style:italic">Expected life: {{age}} years</md-list-item>
+            </md-list>
+    </md-content>
+    
+        </div>
+        </div>
+            
+        <img class="img-responsive" src="images/tamu_logo.png" alt="Chania">
+        </div>
+    </div>
+    <!-- End Visualization Area -->
+    </div>
+</div>
+<!-- End Content -->

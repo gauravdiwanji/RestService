@@ -1,0 +1,63 @@
+<!-- Content -->
+<div class="container">
+    <div class="row">
+    <div class="col-sm-6"><!-- Text Area -->
+        <div class= "well well-sm" >
+        <div class="inside inside-full-height">
+        <p style="margin-left: 50">
+            <span ng-if="!pole1_other.length">Okay, there is nothing </span>
+            <span ng-if="pole1_other.length"> Okay, I have added <i>"<span ng-repeat="entry in pole1_other">{{entry.title}}</span>"</i></span>
+            on the most extreme end of <i>"<span ng-repeat="entry in pole1">{{entry.title}}</span>"</i>.
+        <br><br>
+            Can you think of someone who is on the most extreme end of <i>"<span ng-repeat="entry in pole2">{{entry.title}}</span>"</i>?
+            <hr>
+        </p>  
+                <form role="form" name="poleForm">
+                  <div class="form-group">
+                    <md-input-container class="md-block">
+                    <label>If yes, describe here</label>
+                    <input required name="poleName" ng-model="poleName">
+                    </md-input-container>
+                  </div>
+                <div class="btn-group btn-group-justified">
+                      <div class="btn-group">
+                        <button type="button" ng-click="yesButtonClick()" class="btn btn-default" ng-disabled="poleForm.poleName.$invalid">Yes, I can.</button>
+                      </div>
+                    <div class="btn-group">
+                        <button type="button" ng-click="noButtonClick()" class="btn btn-default">No, I can't.</button>
+                      </div>
+                </div>
+                        </form>
+<!--
+            <md-list>
+            <md-list-item ng-repeat="item in attributeSet">
+            {{item.setId}} {{item.title}} {{item.position}}<md-divider ></md-divider>
+            </md-list-item>
+            </md-list>
+-->
+            
+        </div>   
+        </div>
+
+    </div> <!-- End Text Area -->
+    <!-- Visualization Area -->
+    <div class="col-sm-6">
+        <div class= "well well-xs">
+        The list thus far:
+        <hr>
+        <i>Most healthy</i><br><br>
+        <ul class="list-group">
+        <li class="list-group-item" ng-repeat="entry in pole1_other">{{entry.title}}</li>
+        <li class="list-group-item" ng-repeat="entry in pole1">{{entry.title}}</li>
+        <li class="list-group-item" ng-repeat="entry in pole2">{{entry.title}}</li>
+        <li class="list-group-item" > <strong>???</strong></li>
+        </ul>
+        <i>Least healthy</i>
+        <img class="img-responsive" src="images/tamu_logo.png" alt="Chania">
+        </div>
+    </div>
+    <!-- End Visualization Area -->
+    </div>
+    {{Name}}
+</div>
+<!-- End Content -->

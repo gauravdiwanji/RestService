@@ -1,0 +1,51 @@
+<!-- Content -->
+<div class="container">
+    <div class="row">
+    <div class="col-sm-6"><!-- Text Area -->
+        <div class= "well well-sm" >
+        <div class="inside inside-full-height">
+        <span style="margin-left: 50">
+        That's it!
+        <br><br>
+        We're done with the interview. You can review the results collected from the interview.
+        <br><br>
+        <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Coeff</th>
+        <th>Attribute Level</th>
+        <th>Value</th>
+      </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="item in sortedAttributeData">
+    <td ng-if="item.position == 1" ng-style="styleFunction(item.setPositionId)">{{item.coefficient}}</td>
+    <td ng-if="item.position != 1" ng-style="styleFunction(item.setPositionId)"></td>
+    <td ng-style="styleFunction(item.setPositionId)">{{item.title}}</td>
+    <td ng-style="styleFunction(item.setPositionId)">{{item.relativeWeight}}</td>
+    </tr>
+    </tbody>
+    </table>
+        </span>  
+        </div>   
+        </div>
+
+    </div> <!-- End Text Area -->
+    <!-- Visualization Area -->
+    <div class="col-sm-6">
+        <div class= "well well-xs">
+    
+        <img class="img-responsive" src="images/tamu_logo.png" alt="Chania">
+        </div>
+    </div>
+    <!-- End Visualization Area -->
+    </div>
+<!--
+    {{timeTradeOffList}}
+    <br><br>
+    {{attributeSetData}}
+    <br><br>
+    {{sortedAttributeData}}
+-->
+</div>
+<!-- End Content -->

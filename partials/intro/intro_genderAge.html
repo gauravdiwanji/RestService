@@ -1,0 +1,45 @@
+<!-- Content -->
+<div class="container">
+    <div class="row">
+    <div class="col-sm-6"><!-- Text Area -->
+        <div class= "well well-sm" >
+        <div class="inside inside-full-height">
+        <p style="margin-left: 50">
+                
+                <form role="form" name="ageGenderForm">
+            
+                  <div class="form-group">
+                    Please select your <strong>gender</strong>.
+                    <hr>
+                <md-radio-group ng-model="gender" required>
+                    <md-radio-button value="Male" class="md-primary">Male</md-radio-button>
+                    <md-radio-button value="Female"> Female </md-radio-button>
+                </md-radio-group>
+                    <br> What is your <strong>age</strong>?
+                    <hr> (Please use the slider to indicate age)
+                      <md-slider-container>
+                        <md-slider flex ng-model="age" min="10" max="100" aria-label="green" id="green-slider" class="md-accent" required>
+                        </md-slider><md-input-container>
+                        <input flex type="number" ng-model="age" aria-label="green" aria-controls="green-slider">
+                        </md-input-container>
+                      </md-slider-container>
+                  </div>
+                  <button type="submit" ng-click="nextButtonClick()" ng-disabled="ageGenderForm.$invalid" class="btn btn-default btn-block">Next</button>
+                </form>
+<!--
+            Age:{{age}}
+            Gender: {{gender}}
+-->
+        </div>
+        </div>
+    </div> <!-- End Text Area -->
+        <!-- Visualization Area -->
+    <div class="col-sm-6">
+        <div class= "well well-xs">
+        <img class="img-responsive" src="images/tamu_logo.png" alt="Chania">
+        </div>
+    </div>
+    <!-- End Visualization Area -->
+    </div>
+</div>
+<!-- End Content -->
