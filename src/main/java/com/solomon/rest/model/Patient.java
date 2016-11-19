@@ -2,9 +2,8 @@ package com.solomon.rest.model;
 
 import java.io.Serializable;
 import javax.persistence.*;
-
 import java.util.List;
-
+import java.util.Date;
 
 /**
  * The persistent class for the patient database table.
@@ -23,6 +22,14 @@ public class Patient implements Serializable {
 	private String password;
 
 	private String username;
+	
+	private String firstname;
+	
+	private String lastname;
+	
+	private Date dateofbirth;
+	
+	private String MRN;
 
 	private int version;
 
@@ -63,6 +70,38 @@ public class Patient implements Serializable {
 
 	public void setUsername(String username) {
 		this.username = username;
+	}
+
+	public String getFirstname() {
+		return firstname;
+	}
+
+	public void setFirstname(String firstname) {
+		this.firstname = firstname;
+	}
+
+	public String getLastname() {
+		return lastname;
+	}
+
+	public void setLastname(String lastname) {
+		this.lastname = lastname;
+	}
+
+	public Date getDateofbirth() {
+		return dateofbirth;
+	}
+
+	public void setDateofbirth(Date dateofbirth) {
+		this.dateofbirth = dateofbirth;
+	}
+
+	public String getMRN() {
+		return MRN;
+	}
+
+	public void setMRN(String mRN) {
+		MRN = mRN;
 	}
 
 	public int getVersion() {

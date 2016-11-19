@@ -1,8 +1,12 @@
 package com.solomon.rest.service;
 
+
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -10,7 +14,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
-import javax.persistence.TypedQuery;
 
 import org.springframework.stereotype.Service;
 
@@ -111,6 +114,66 @@ public class JPAPersistenceManagerService {
 		
 	}
 	
+	public String getPatientID(String firstName, String lastName, String dateOfBirth) {
+		EntityManager em = emf.createEntityManager();
+		
+		//DateFormat m_ISO8601Local = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'.000Z'");
+		DateFormat m_ISO8601Local = new SimpleDateFormat("yyyy-MM-dd");
+		java.util.Date dob;
+		try {
+			dob = m_ISO8601Local.parse(dateOfBirth);
+		} catch (ParseException e) {	
+			e.printStackTrace();
+			return "-1";
+		}
+		
+		Query query = em.createQuery("SELECT e FROM Patient e WHERE e.firstname = :firstname and e.lastname = :lastname and e.dateofbirth = :dateofbirth");
+		query.setParameter("firstname", firstName);
+		query.setParameter("lastname", lastName);
+		query.setParameter("dateofbirth", dob);
+
+		Patient patient;
+		try{
+		patient = (Patient) query.getSingleResult();
+		}
+		catch(Exception ex){
+			patient = new Patient();
+			patient.setName(firstName+" "+lastName);
+			patient.setFirstname(firstName);
+			patient.setLastname(lastName);
+			patient.setDateofbirth(dob);
+						
+			em.getTransaction().begin();
+			em.persist(patient);
+			em.getTransaction().commit();
+			em.close();
+		
+		}
+		
+		return patient.getId();		
+	}
+	
+	public List<Model> getPatientModels(String patientId)
+	{
+		EntityManager em = emf.createEntityManager();
+		Patient patient = em.find(Patient.class, patientId);
+
+		List<Model> models = patient.getModels();
+		em.close();
+		return models;
+		
+	}
+	
+	public String getModelJson(String modelId)
+	{
+		EntityManager em = emf.createEntityManager();
+		Model model = em.find(Model.class, modelId);
+	
+		em.close();
+		return model.getJson_data();
+		
+	}
+	
 	public void insertUpdateSolomonRecord(SolomonRecord solomonRecord)
 	{
 		EntityManager em = emf.createEntityManager();
@@ -121,6 +184,12 @@ public class JPAPersistenceManagerService {
 		try{
 			Model model = (Model) query.getSingleResult();
 			System.out.println("Solomon Record Already Exists");
+			model.setUpdatedate(new Date());
+			if(solomonRecord.getCurrentScreen().equals("/n4_timeTradeOff_result"))
+			{
+				model.setCompleted(1);
+				model.setCompletiondate(new Date());
+			};
 			Patient patient = new Patient();
 			patient = model.getPatientBean();
 			patient.setName(solomonRecord.getUserName());
@@ -234,13 +303,32 @@ public class JPAPersistenceManagerService {
 		{
 			System.out.println("Insert NEW Record -- Error:"+solomonRecord.getModelName()+" doesnt exist"+e.getMessage());
 			
-			Patient patient = new Patient();
-			patient.setName(solomonRecord.getUserName());
+			
+			Patient patient;
+			try{
+			patient = em.find(Patient.class, solomonRecord.getPatientId());
+			System.out.println("Patient Identiied");
+			}
+			catch(Exception ex)
+			{
+			String patId = this.getPatientID(solomonRecord.getFirstName(),solomonRecord.getLastName(),solomonRecord.getDateOfBirth());
+				try{
+				patient = em.find(Patient.class, solomonRecord.getPatientId());
+				}
+				catch(Exception ex2)
+				{
+					
+					return;
+				}
+			}
+			//patient.setName(solomonRecord.getUserName());
 			List<Model> models = new ArrayList<Model>();
 			patient.setModels(models);
 					
 			Model model = new Model();
 			model.setModelname(solomonRecord.getModelName());
+			model.setCreationdate(new Date());
+			model.setUpdatedate(new Date());
 			model.setLocation(solomonRecord.getInterviewLocation());
 			model.setAge(solomonRecord.getAge());
 			model.setJson_data(solomonRecord.getJsonText());

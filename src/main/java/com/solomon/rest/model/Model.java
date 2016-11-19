@@ -3,7 +3,7 @@ package com.solomon.rest.model;
 import java.io.Serializable;
 import javax.persistence.*;
 
-
+import java.util.Date;
 import java.util.List;
 
 
@@ -28,6 +28,12 @@ public class Model implements Serializable {
 	private String modelname;
 
 	private int version;
+	
+	private Date creationdate;
+	
+	private Date updatedate;
+	
+	private Date completiondate;
 	
 	@Lob
 	private String json_data;
@@ -90,6 +96,30 @@ public class Model implements Serializable {
 
 	public void setVersion(int version) {
 		this.version = version;
+	}
+
+	public Date getCreationdate() {
+		return creationdate;
+	}
+
+	public void setCreationdate(Date creationdate) {
+		this.creationdate = creationdate;
+	}
+
+	public Date getUpdatedate() {
+		return updatedate;
+	}
+
+	public void setUpdatedate(Date updatedate) {
+		this.updatedate = updatedate;
+	}
+
+	public Date getCompletiondate() {
+		return completiondate;
+	}
+
+	public void setCompletiondate(Date completiondate) {
+		this.completiondate = completiondate;
 	}
 
 	public String getJson_data() {

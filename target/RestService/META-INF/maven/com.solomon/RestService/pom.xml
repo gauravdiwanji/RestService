@@ -67,8 +67,11 @@
 						<url>http://localhost:8080/manager/text</url>
 						<server>TomcatServer</server>
 						<path>/RestService</path>
+						<username>admin</username>
+        				<password>password</password>
+        				<update>true</update>
 					</configuration>
 	</plugin>
 </plugins>
-  </build>
+</build>
 </project>

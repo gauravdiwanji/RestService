@@ -33,6 +33,14 @@ public class SolomonRecord
     private String userName;
     
     private String modelName;
+    
+    private String firstName;
+    
+    private String lastName;
+    
+    private String dateOfBirth;
+    
+    private String patientId;
 
 	private String currentHealthState;
 
@@ -174,7 +182,39 @@ public class SolomonRecord
 		this.modelName = modelName;
 	}
 
-    public String getCurrentHealthState ()
+    public String getFirstName() {
+		return firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	public String getDateOfBirth() {
+		return dateOfBirth;
+	}
+
+	public void setDateOfBirth(String dateOfBirth) {
+		this.dateOfBirth = dateOfBirth;
+	}
+
+	public String getPatientId() {
+		return patientId;
+	}
+
+	public void setPatientId(String patientId) {
+		this.patientId = patientId;
+	}
+
+	public String getCurrentHealthState ()
     {
         return currentHealthState;
     }
