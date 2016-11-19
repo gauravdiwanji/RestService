@@ -322,7 +322,15 @@ public class JPAPersistenceManagerService {
 				}
 			}
 			//patient.setName(solomonRecord.getUserName());
-			List<Model> models = new ArrayList<Model>();
+			//List<Model> models = new ArrayList<Model>();
+			//patient.setModels(models);
+			
+			List<Model> models = patient.getModels();
+			if(models == null)		
+			{
+			models = new ArrayList<Model>();
+			}
+			
 			patient.setModels(models);
 					
 			Model model = new Model();
