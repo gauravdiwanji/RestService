@@ -1,0 +1,90 @@
+<br>
+Assign patient health states
+<hr>
+<md-content>
+<div class = "well">
+<strong>Patient: </strong>{{selectedPatient.firstName+' '+selectedPatient.lastName}}
+<md-button class="md-raised" ng-click = "patientSelectVisible = !patientSelectVisible;">Select patient</md-button>
+
+<span ng-show = "patientSelectVisible">
+
+<br><br>
+<form>
+    <div class="form-group">
+      <div class="input-group">
+        <div class="input-group-addon"><i class="fa fa-search">Search</i></div>
+        <input type="text" class="form-control" placeholder="Patient" ng-model="searchPatient">
+      </div>      
+    </div>
+</form>
+<table class="table table-bordered table-striped">
+<thead>
+<tr>
+    <td width="70"></td>    
+    <td>
+    <span ng-click="sortType = 'lastName'; sortReverse = !sortReverse">
+    Last Name
+    <span ng-show="sortType == 'lastName' && !sortReverse" class="fa fa-caret-down"></span>
+    <span ng-show="sortType == 'lastName' && sortReverse" class="fa fa-caret-up"></span>
+    </span>
+    </td>
+    <td>
+    <span ng-click="sortType = 'firstName'; sortReverse = !sortReverse">
+    First Name
+    <span ng-show="sortType == 'firstName' && !sortReverse" class="fa fa-caret-down"></span>
+    <span ng-show="sortType == 'firstName' && sortReverse" class="fa fa-caret-up"></span>
+    </span>
+    </td>      
+</tr>
+</thead>
+<tbody>
+      <tr dir-paginate="item in patientList | orderBy:sortType:sortReverse | filter:searchPatient | itemsPerPage:5">
+        <td width="70">
+        <button ng-click="selectPatientClick(item.id,item.firstName,item.lastName);">
+        Select</button></td>
+        <td>{{ item.lastName }}</td>
+        <td>{{ item.firstName }}</td>
+      </tr>
+</tbody>
+</table>
+<dir-pagination-controls
+       max-size="5"
+       direction-links="true"
+       boundary-links="true" >
+</dir-pagination-controls>    
+ </span>   
+</div>
+</md-content>
+
+<span ng-show = "showHsSelection">
+<md-content>
+<div class = "well">
+<strong>Check applicable heath states:</strong>
+<hr>
+<table class="table table-bordered table-striped">
+<thead>
+<tr>
+        <td>Select</td>
+        <td>Health State Description</td>
+</tr>
+</thead>
+<tbody>
+      <tr dir-paginate="item in AssignmentList | itemsPerPage:5">
+        <td><md-checkbox ng-model="item.checkFlag"></md-checkbox></td>
+<!--        <td>{{ item.id }}</td>-->
+        <td>{{ item.hsDescription }}</td>
+<!--        <td>{{ roll.fish }}</td>-->
+<!--        <td>{{ roll.tastiitemness }}</td>-->
+      </tr>
+</tbody>
+</table>
+<dir-pagination-controls
+       max-size="5"
+       direction-links="true"
+       boundary-links="true" >
+</dir-pagination-controls>
+<br>
+<md-button class="md-raised" ng-click = "">Update</md-button>
+</div>
+</md-content>
+</span>

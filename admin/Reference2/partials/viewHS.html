@@ -1,0 +1,37 @@
+<br>
+
+View Health States
+<hr>
+<form>
+    <div class="form-group">
+      <div class="input-group">
+        <div class="input-group-addon"><i class="fa fa-search">Search</i></div>
+        <input type="text" class="form-control" placeholder="Heath State" ng-model="searchHS">
+      </div>      
+    </div>
+</form>
+<hr>
+<table class="table table-bordered table-striped">
+<thead>
+<tr>
+        <td>ID</td>
+        <td>Health State Description</td>
+</tr>
+</thead>
+<tbody>
+      <tr dir-paginate="item in healthStateList | filter:searchHS | itemsPerPage:5">
+        <td>{{ item.id }}</td>
+<!--        <td>{{ item.id }}</td>-->
+        <td>{{ item.description }}</td>
+<!--        <td>{{ roll.fish }}</td>-->
+<!--        <td>{{ roll.tastiitemness }}</td>-->
+      </tr>
+</tbody>
+</table>
+<dir-pagination-controls
+       max-size="5"
+       direction-links="true"
+       boundary-links="true" >
+</dir-pagination-controls>
+
+<button type="button" class="btn btn-outline-primary">Add new health state</button>

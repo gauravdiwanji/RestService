@@ -1,0 +1,58 @@
+<br>
+Score Models
+<hr>
+<table>
+<thead>
+<tr>
+<td>Realtive weight</td>
+<td>Lable</td>
+</tr>
+</thead>
+<tr ng-repeat="scale in modelData.scales | orderBy : 'relativeWeight' : true">
+    <td>{{scale.relativeWeight}}</td>
+    <td>
+        <table>
+        <tr ng-repeat="oaLevel in scale.oaLevels | orderBy :  'weight' : true">
+        <td style ="width:300">{{oaLevel.label}}</td>
+        <td>{{oaLevel.weight}}</td>   
+        </tr>
+        </table>
+    </td>
+</tr>
+</table>
+<!-- Content -->
+<div class="well">
+    <div class="row">
+    <div class="col-sm-6"><!-- Text Area -->
+        <div class= "well well-sm" >
+        <div class="inside inside-full-height">
+        <span style="margin-left: 50">
+        That's it!
+        <br><br>
+        We're done with the interview. You can review the results collected from the interview.
+        <br><br>
+        <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Coeff</th>
+        <th>Attribute Level</th>
+        <th>Value</th>
+      </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="item in sortedAttributeData">
+    <td ng-if="item.position == 1" ng-style="styleFunction(item.setId)">{{item.coefficient}}</td>
+    <td ng-if="item.position != 1" ng-style="styleFunction(item.setId)"></td>
+    <td ng-style="styleFunction(item.setId)">{{item.title}}</td>
+    <td ng-style="styleFunction(item.setId)">{{item.relativeWeight}}</td>
+    </tr>
+    </tbody>
+    </table>
+        </span>  
+        </div>   
+        </div>
+
+    </div> <!-- End Text Area -->
+    </div>
+</div>
+<!-- End Content -->

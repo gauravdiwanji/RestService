@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,700' rel='stylesheet' type='text/css'>
+
+	<link rel="stylesheet" href="css/reset.css"> <!-- CSS reset -->
+	<link rel="stylesheet" href="css/style.css"> <!-- Resource style -->
+	<script src="js/modernizr.js"></script> <!-- Modernizr -->
+    
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <!-- <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
+    -->
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-route.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-animate.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-aria.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-messages.min.js"></script>
+    
+     <!-- Angular Material -->
+    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0-rc2/angular-material.min.css">
+    <link rel="stylesheet" href="./css/style.css">
+
+<!--    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js"></script>-->
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-animate.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-aria.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-messages.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0-rc2/angular-material.min.js"></script>
+     <!-- Angular Material -->
+    
+    <!-- ng-Sortable -->
+    <script src="http://rubaxa.github.io/Sortable/Sortable.js"></script>
+    <script src="http://rubaxa.github.io/Sortable/ng-sortable.js"></script>
+    <!-- ng-Sortable -->
+
+    <!--    Google Charts-->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <!--    Google Charts-->
+  	
+    <!--    Pagination-->
+    <script src="./scripts/dirPagination.js"></script>
+<!--    Reference: https://code.ciphertrick.com/2015/06/01/search-sort-and-pagination-ngrepeat-angularjs/-->
+    <!--    Pagination-->
+    
+<!--    Font Awesome-->
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+<!--    Font Awesome-->
+    
+	<title>Solomon Admin</title>
+</head>
+<body>
+<!--
+    <div ng-app="solomonApp">
+    <script src="scripts/app.js"></script>
+    </div>
+-->
+	<header class="cd-main-header">
+<!--		<a href="#0" class="cd-logo"><img src="img/cd-logo.svg" alt="Logo"></a>-->
+        <a class="navbar-brand" href="#" style="color:#ffffff">Solomon <strong>Admin</strong></a>
+
+		<a href="#0" class="cd-nav-trigger"><span></span></a>
+
+		<nav class="cd-nav">
+			<ul class="cd-top-nav">
+<!--
+				<li><a href="#0">Page 1</a></li>
+				<li><a href="#0">Page 2</a></li>
+-->
+				<li class="has-children account">
+					<a href="#0">
+						<img src="img/cd-avatar.png" alt="avatar">
+						Account
+					</a>
+
+					<ul>
+
+<!--						<li><a href="#0">My Account</a></li>-->
+<!--						<li><a href="#0">Edit Account</a></li>-->
+						<li><a href="#0">Logout</a></li>
+					</ul>
+				</li>
+			</ul>
+		</nav>
+	</header> <!-- .cd-main-header -->
+
+ <div ng-app="solomonAdminApp">   
+	<main class="cd-main-content">
+		<nav class="cd-side-nav">
+			<ul>
+<!--				<li class="cd-label">Main</li>-->
+				<li class="has-children overview active">
+					<a href="#0">Heath State</a>
+					
+					<ul>
+						<li><a href="#viewHS">View heath states</a></li>
+						<li><a href="#addHS">Add new health states</a></li>
+					</ul>
+				</li>
+                
+                <li class="has-children users active">
+					<a href="#0">Patients</a>
+					
+					<ul>
+						<li><a href="#viewPatient">All patients</a></li>
+						<li><a href="#assignHS">Assign health states</a></li>
+						<li><a href="#viewModel">Patient models</a></li>
+					</ul>
+				</li>
+                
+				<li class="has-children comments active">
+					<a href="#0">
+                        Score Models<span class="count">3</span>
+                    </a>
+					
+					<ul>
+						<li><a href="#viewScore">View scores</a></li>
+						<li><a href="#scoreModel">Score models</a></li>
+					</ul>
+				</li>
+                             
+			</ul>
+
+		</nav>
+
+<div class="content-wrapper">
+<!--			<h1>Changing body here</h1>-->         
+<div ng-view></div>
+</div>
+     <!-- .content-wrapper -->
+</main>
+<script src="./scripts/adminApp.js"></script>	
+</div>
+	 <!-- .cd-main-content -->
+<script src="js/jquery-2.1.4.js"></script>
+<script src="js/jquery.menu-aim.js"></script>
+<script src="js/main.js"></script> <!-- Resource jQuery -->
+</body>
+</html>
