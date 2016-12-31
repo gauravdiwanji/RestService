@@ -28,7 +28,10 @@ import com.fasterxml.jackson.core.JsonGenerationException;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.solomon.rest.model.HealthStateMaster;
+import com.solomon.rest.model.HealthStateRecord;
 import com.solomon.rest.model.Model;
+import com.solomon.rest.model.ModelRecord;
 import com.solomon.rest.model.SolomonRecord;
 import com.solomon.rest.service.JPAPersistenceManagerService;
 
@@ -244,5 +247,40 @@ public class UpdateModel {
 		.status(200)
 		   .entity(
 			modelJSON).build();
+	}
+
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	@Path("/heathStates")
+	//http://localhost:8080/RestService/solomon/models/patientModels?patientId=44
+	public Response getHealthStates()
+	{
+		List<HealthStateMaster> list = jpaService.getHealthStates();
+		return Response   
+				.status(200)
+				   .entity(
+					list).build();
+	}
+	
+	@POST
+	@Path("/addHeathStates")
+	@Consumes(MediaType.APPLICATION_JSON)
+	public Response insertHeathState(HealthStateRecord record) {		
+		jpaService.insertHealthStateRecord(record);
+		return Response.status(200).entity(record.toString()).build();
+	}
+
+	
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	@Path("/completeModel")
+	//http://localhost:8080/RestService/solomon/models/completeModel?modelId=47
+	public Response getCompleteModel(@QueryParam("modelId") String modelId)
+	{
+		ModelRecord modelRecord = jpaService.getModelData(modelId);
+		return Response   
+				.status(200)
+				   .entity(
+						   modelRecord).build();
 	}
 }

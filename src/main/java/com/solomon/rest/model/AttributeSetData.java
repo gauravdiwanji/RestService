@@ -1,5 +1,10 @@
 package com.solomon.rest.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+//Ignore unknown properties
+@JsonIgnoreProperties(ignoreUnknown=true)
 public class AttributeSetData
 {
     private int position;
@@ -9,8 +14,10 @@ public class AttributeSetData
     private String $$hashKey;
 
     private double relativeWeight;
+    
+    private double coefficient;
 
-    private int setId;
+	private int setId;
 
     public int getPosition ()
     {
@@ -51,6 +58,14 @@ public class AttributeSetData
     {
         this.relativeWeight = relativeWeight;
     }
+    
+    public double getCoefficient() {
+		return coefficient;
+	}
+
+	public void setCoefficient(double coefficient) {
+		this.coefficient = coefficient;
+	}
 
     public int getSetId ()
     {

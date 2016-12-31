@@ -12,6 +12,9 @@
     <class>com.solomon.rest.model.Scale</class>
     <class>com.solomon.rest.model.HelloWorld</class>
     <class>com.solomon.rest.model.HelloCategory</class>
+    <class>com.solomon.rest.model.HealthStateMaster</class>
+    <!-- <class>com.solomon.rest.model.PatientHealthState</class>
+    <class>com.solomon.rest.model.PatientModelScored</class> -->
     <properties>
       <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
             <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/solomon" />

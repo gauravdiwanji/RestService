@@ -17,15 +17,7 @@ import javax.persistence.Query;
 
 import org.springframework.stereotype.Service;
 
-import com.solomon.rest.model.AttributeSetData;
-import com.solomon.rest.model.HelloCategory;
-import com.solomon.rest.model.HelloWorld;
-import com.solomon.rest.model.Model;
-import com.solomon.rest.model.OaLevel;
-import com.solomon.rest.model.Patient;
-import com.solomon.rest.model.Scale;
-import com.solomon.rest.model.SolomonRecord;
-import com.solomon.rest.model.TestTable;
+import com.solomon.rest.model.*;
 
 @Service
 public class JPAPersistenceManagerService {
@@ -232,6 +224,9 @@ public class JPAPersistenceManagerService {
 					}
 				}
 				
+				//Update weight
+				scale.setRelativeWeight(inputAttributeSetData.getCoefficient());
+				
 				if(!new_scales.contains(scale))
 				{
 					new_scales.add(scale); //Add this directly to model
@@ -385,7 +380,83 @@ public class JPAPersistenceManagerService {
 			
 		}
 		
+		
+		
+		
+	}
+
+	public List<HealthStateMaster> getHealthStates()
+	{
+		EntityManager em = emf.createEntityManager();
+		List<HealthStateMaster> list = (List<HealthStateMaster>) em.createNamedQuery("HealthStateMaster.findAll").getResultList();;
+		
+		return list;
+				
 	}
 	
+	public void insertHealthStateRecord(HealthStateRecord record)
+	{
+		HealthStateMaster master = new HealthStateMaster();
+		master.setCategory(record.getCategory());
+		master.setDescription(record.getDescription());
+		
+		EntityManager em = emf.createEntityManager();
+		
+		em.getTransaction().begin();
+		em.merge(master);			
+		em.getTransaction().commit();
+		em.close();
+						
+	}
 	
+	public ModelRecord getModelData(String modelId)
+	{	
+		EntityManager em = emf.createEntityManager();
+		try{
+		Model model = em.find(Model.class, modelId);
+		
+		ModelRecord modelRecord = new ModelRecord();
+		
+		modelRecord.setId(model.getId());
+		modelRecord.setModelname(model.getModelname());
+		modelRecord.setLocation(model.getLocation());
+		modelRecord.setCompleted(model.getCompleted());
+		
+		List<ScaleRecord> scales = new ArrayList<ScaleRecord>();
+		
+		for(Scale scale : model.getScales())
+		{
+			ScaleRecord scaleRecord = new ScaleRecord();
+			scaleRecord.setId(scale.getId());
+			scaleRecord.setLabel(scale.getLabel());
+			scaleRecord.setRelativeWeight(scale.getRelativeWeight());
+			
+			List<OaLevelRecord> oaLevels = new ArrayList<OaLevelRecord>();
+			for(OaLevel oaLevel : scale.getOaLevels())
+			{
+				OaLevelRecord oaLevelRecord = new OaLevelRecord();
+				oaLevelRecord.setId(oaLevel.getId());
+				oaLevelRecord.setLabel(oaLevel.getLabel());
+				oaLevelRecord.setPosition(oaLevel.getPosition());
+				oaLevelRecord.setWeight(oaLevel.getWeight());
+				
+				oaLevels.add(oaLevelRecord);
+			}
+			scaleRecord.setOaLevels(oaLevels);
+			
+			scales.add(scaleRecord);
+		}
+		
+		modelRecord.setScales(scales);
+		
+		return modelRecord;
+		}
+		catch (Exception ex)
+		{
+		return null;
+		}
+		
+		
+	}
+
 }

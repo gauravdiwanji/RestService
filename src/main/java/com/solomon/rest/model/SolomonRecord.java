@@ -48,7 +48,7 @@ public class SolomonRecord
 
     private List<Relationships> relationships;
 
-    private String[] sortedAttributeData;
+//    private String[] sortedAttributeData;
 
     //private HashTable hashTable;
 
@@ -244,15 +244,15 @@ public class SolomonRecord
         this.relationships = relationships;
     }
 
-    public String[] getSortedAttributeData ()
-    {
-        return sortedAttributeData;
-    }
-
-    public void setSortedAttributeData (String[] sortedAttributeData)
-    {
-        this.sortedAttributeData = sortedAttributeData;
-    }
+//    public String[] getSortedAttributeData ()
+//    {
+//        return sortedAttributeData;
+//    }
+//
+//    public void setSortedAttributeData (String[] sortedAttributeData)
+//    {
+//        this.sortedAttributeData = sortedAttributeData;
+//    }
 
 //    public HashTable getHashTable ()
 //    {
@@ -412,7 +412,7 @@ public class SolomonRecord
 		builder.append(", relationships=");
 		builder.append(relationships);
 		builder.append(", sortedAttributeData=");
-		builder.append(Arrays.toString(sortedAttributeData));
+//		builder.append(Arrays.toString(sortedAttributeData));
 //		builder.append(", hashTable=");
 //		builder.append(hashTable);
 		builder.append(", solution_array_counter=");
